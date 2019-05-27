@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Portal::User Sign In</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/bulma.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="fontawesome/css/all.min.css">
+    </head>
+    <body>
+        <div class="block columns is-centered is-vcentered">
+            <div class="column is-one-third">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-title">
+                            <i class="fa fa-2x fa-lock"></i>&nbsp;
+                            <h1 class="title is-2">User Login</h1>
+                        </div>
+                        <div class="media">
+                            <div class="media-right">
+                                <figure class="image is-48x48 has-padding-2">
+                                    <img src="images/Deeper-Life-Logo.jpg" alt="DCLM Logo">
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-content">
+                        <form class="form">
+                            <div class="field">
+                                <label class="label" for="txtUser">Username</label>
+                                <div class="control has-icons-left">
+                                    <input type="text" name="txtUser" class="input" required>
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-user"></i>
+                                    </span>                                    
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label for="txtPassword" class="label">Password</label>
+                                <div class="control has-icons-left">
+                                    <input type="password" name="txtPassword" class="input" required>
+                                    <span class="icon is-small is-left">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <input type="checkbox" name="chkRemember" >
+                                    Remember me on this system.
+                                </div>
+                            </div>
+                            <div class="field">
+                                forgot your password? <a href="#">click here to reset it</a>.
+                            </div>
+                            <div class="field">
+                                <div class="control">
+                                    <button type="button" class="is-link is-large">Sign In</button>                                    
+                                </div>
+                            </div>
+                        </form>
+                    </div>   
+                    <div class="card-footer">
+                        &copy;2019&nbsp;DEEPER CHRISTIAN LIFE MINISTRY
+                    </div>                 
+                </div>
+            </div>
+        </div>
+        <script src="js/angular.min.js"></script>
+        <script src="js/signin.js"></script>
+    </body>
+</html>
