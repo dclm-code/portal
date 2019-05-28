@@ -12,36 +12,41 @@
 </head>
 
 <body>
-    <header style="padding: 24px 12px 48px">
-        <h1 class="title is-1">ADD COUNTRY</h1>
+<header>
+        <h1 class="title is-2">ADD COUNTRY</h1>
     </header>
-    <section>
-        <div class="field">
-            <label class="label">Country Code</label>
-            <div class="control">
-                <input type="text" class="input" placeholder="Country Code">
-            </div>
-        </div>
+    <div ng-app="dclm-app" ng-controller="country">
+        <form class="form">
 
-        <div class="field">
-            <label class="label">Country Name</label>
-            <div class="control has-icons-left">
-                <input type="text" class="input" placeholder="Country Name">
-                <span class="icon is-small is-left">
-            <i class="far fa-flag"></i>
-          </span>
-            </div>
         </div>
-        <div class="field is-grouped">
-            <div class="control">
-                <button class="button is-link">Submit</button>
+        <section>
+            <div class="field">
+                <label class="label">Country Code</label>
+                <div class="control">
+                    <input ng-model = "country.country_code" type="text" class="input" placeholder="Country Code">
+                </div>
             </div>
-            <div class="control">
-                <button class="button is-link">Cancel</button>
+    
+            <div class="field">
+                <label class="label">Country Name</label>
+                <div class="control has-icons-left">
+                    <input ng-model="country.country_name" type="text" class="input" placeholder="Country Name">
+                    <span class="icon is-small is-left">
+                <i class="far fa-flag"></i>
+              </span>
+                </div>
             </div>
-        </div>
-
-    </section>
+            <div class="field is-grouped">
+                <div class="control">
+                    <button ng-click="save();" class="button is-link">Submit</button>
+                </div>
+                <div class="control">
+                    <button class="button is-link">Cancel</button>
+                </div>
+            </div>
+    
+       </form>
+        </section>
 </body>
 
 </html>
