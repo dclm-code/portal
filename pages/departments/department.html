@@ -11,14 +11,16 @@
 </head>
 
 <body>
-    <header style="padding: 24px 12px 48px">
-        <h1 class="title is-1">ADD DEPARTMENT</h1>
+    <header>
+        <h1 class="title is-2">ADD DEPARTMENT</h1>
     </header>
     <section>
+    <div ng-app="dclm-app" ng-controller="Department">
+    <form class="form">
         <div class="field">
             <label class="label">Department Name</label>
             <div class="control has-icons-left">
-                <input type="text" class="input" placeholder="Department Name">
+                <input ng-model = "Department.dept_name" type="text" class="input" placeholder="Department Name">
                 <span class="icon is-small is-left">
               <i class="fa fa-briefcase"></i>
             </span>
@@ -27,17 +29,18 @@
         <div class="field">
             <label class="label">Department Code</label>
             <div class="control">
-                <input type="text" class="input" placeholder="Department Code">
+                <input ng-model = "Department.dept_code" type="text" class="input" placeholder="Department Code">
             </div>
         </div>
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link">Submit</button>
+                <button ng-click ="save();" class="button is-link">Submit</button>
             </div>
             <div class="control">
-                <button class="button is-link">Cancel</button>
+                <button class="button is-light">Cancel</button>
             </div>
         </div>
+    </form>
     </section>
 </body>
 
