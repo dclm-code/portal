@@ -10,43 +10,44 @@
 </head>
 
 <body>
+        <div ng-app="dclm-app" ng-controller="group_lgas">
+    <form class="form">
     <div class="field">
-        <label class="label">STATES ID</label>
+       <h1 class="title is-2"> Enter State</h1><br>
         <div class="control">
-            <div class="select">
-                <select>
-                  <option>Select dropdown</option>
-                  <option>With options</option>
+            <div class="select input">
+                <select class="input" ng-model="group_lgas.state_id">
+                  <option >Select State id</option>
+                  
                 </select>
             </div>
         </div>
     </div>
 
     <div class="field">
-        <label class="label">LOCAL GOVERNMENT NAME/GROUP</label>
+        <label class="label">Local Government Name/Group</label>
         <div class="control">
-            <input class="input" type="text" placeholder="Text input">
+            <input ng-model="group_lgas.lgas_name" class="input" type="text" placeholder="Text input">
         </div>
-        <p class="help">This is a help text</p>
+        
     </div>
 
     <div class="field">
-        <label class="label">LOCAL GOVERNMENT CODE</label>
+        <label class="label">Local Government Code</label>
         <div class="control">
-            <input class="input" type="text" placeholder="Text input">
+            <input ng-model="group_lgas.lga_cod" class="input" type="text" placeholder="Text input">
         </div>
-        <p class="help">This is a help text</p>
     </div>
 
     <div class="field is-grouped">
         <div class="control">
-            <button class="button is-link">Submit</button>
+            <button ng-click="group();" class="button is-link">Submit</button>
         </div>
         <div class="control">
             <button class="button is-link">Cancel</button>
         </div>
     </div>
-
+</form>
     <script src="../js/angular.min.js"></script>
     <script src="..js/regions.js"></script>
 </body>
