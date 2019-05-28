@@ -10,23 +10,25 @@
 </head>
 
 <body>
-    <form class="form">
+        <header style="padding: 24px 12px 48px">
+                <h1 class="title is-1">ENTER QUALIFICATION</h1>
+            </header>
+            <div ng-app="dclm-app" ng-controller="Qualifications">
+    <form class="form"> 
+             <br>
         <div class="field">
-            <u><label class="label">Enter Qualification</label></u></div><br>
+                <label class="label">Qualification Code</label>
+                <div class="control">
+                    <input ng-model="Qualifications.Qualification_code="input" type="  " placeholder="e.g. 020gd">
+                </div>
+            </div><br>
         <div class="field">
             <label class="label">Qualification Name</label>
             <div class="control">
-                <input class="input" type="text" placeholder="e.g B.SC">
+                <input ng-model="Qualifications.Qualification_name class="input" type="text" placeholder="e.g B.SC">
             </div>
-        </div><br><br>
-
-        <div class="field">
-            <label class="label">Qualification Code</label>
-            <div class="control">
-                <input class="input" type="  " placeholder="e.g. 020gd">
-            </div>
-        </div><br><br><br>
-        <div class="field is-grouped is-grouped-center">
+        </div><br>
+<div class="field is-grouped is-grouped-center">
             <p class="control">
                 <a class="button is-primary">
                             Submit
@@ -39,6 +41,7 @@
             </p>
         </div>
     </form>
+</div>
     <script src="js/angular.min.js"></script>
     <script src="js/da"></script>
 </body>
