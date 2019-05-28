@@ -11,15 +11,16 @@
 </head>
 
 <body>
-    <header style="padding: 24px 12px 48px">
-        <h1 class="title is-1"> ADD STAFF MEMBER</h1>
+    <header>
+        <h1 class="title is-2"> ADD STAFF MEMBER</h1>
     </header>
+    <div ng-app="dclm-app" ng-controller="users">
     <section>
         <form class="form">
             <div class="field">
                 <label class="label"> Staff ID </label>
                 <div class="control has-icons-left">
-                    <input class="input" type="text" placeholder="STAFF ID">
+                    <input ng-model="user.staff_id" class="input" type="text" placeholder="STAFF ID">
                     <span class="icon is-small is-left">
                         <i class="fa fa-id-card"></i>
                     </span>
@@ -28,7 +29,7 @@
             <div class="field">
                 <label class="label"> First Name </label>
                 <div class="control has-icons-left">
-                    <input class="input" type="text" placeholder="FIRST NAME">
+                    <input ng-model="user.first_name" class="input" type="text" placeholder="FIRST NAME">
                     <span class="icon is-small is-left">
                         <i class="fa fa-user"></i>
                     </span>
@@ -37,7 +38,7 @@
             <div class="field">
                 <label class="label"> Middle Name </label>
                 <div class="control has-icons-left">
-                    <input class="input" type="text" placeholder="MIDDLE NAME">
+                    <input ng-model="user.middle_name" class="input" type="text" placeholder="MIDDLE NAME">
                     <span class="icon is-small is-left">
                                 <i class="fa fa-user"></i>
                             </span>
@@ -46,7 +47,7 @@
             <div class="field">
                 <label class="label">  Surname </label>
                 <div class="control has-icons-left">
-                    <input class="input" type="text" placeholder="SURNAME">
+                    <input ng-model="user.surname" class="input" type="text" placeholder="SURNAME">
                     <span class="icon is-small is-left">
                             <i class="fa fa-user"></i>
                         </span>
@@ -55,23 +56,23 @@
             <div class="field">
                 <label class="label">Email</label>
                 <div class="control has-icons-left">
-                    <input class="input" type="email" placeholder="Email input" value="hello@">
+                    <input ng-model="user.email" class="input" type="email" placeholder="Email input" value="hello@">
                     <span class="icon is-small is-left">
                     <i class="fa fa-envelope"></i>
                   </span>
                 </div>
             </div>
             <div class="field">
-                <label class="label">  Password </label>
+                <label class="label">Password</label>
                 <div class="control">
-                    <input class="input" type="password" placeholder="PASSWORD">
+                    <input ng-model="user.password" class="input" type="password" placeholder="PASSWORD">
                 </div>
             </div>
             <div class="field">
                 <label class="label">Gender</label>
                 <div class="control">
-                    <div class="select">
-                        <select>
+                    <div class="select input">
+                        <select ng-model="user.gender">
                       <option value="Please select one option" disabled>Please select one option</option>
                       <option>Female</option>
                       <option>Male</option>
@@ -82,7 +83,7 @@
             <div class="field">
                 <label class="label">Phone Number</label>
                 <div class="control has-icons-left">
-                    <input class="input" type="tel" placeholder="PHONE NUMBER">
+                    <input ng-model="user.phone_number" class="input" type="tel" placeholder="PHONE NUMBER">
                     <span class="icon is-small is-left">
                             <i class="fa fa-phone"></i>
                         </span>
@@ -91,7 +92,7 @@
             <div class="field">
                 <label class="label">Date of Birth</label>
                 <div class="control has-icons-left">
-                    <input class="input" type="date" placeholder="DATE OF BIRTH" style="cursor:pointer">
+                    <input ng-model="user.date_of_birth" class="input" type="date" placeholder="DATE OF BIRTH" style="cursor:pointer">
                     <span class="icon is-small is-left">
                             <i class="fa fa-calendar"></i>
                         </span>
@@ -100,11 +101,10 @@
             <div class="field">
                 <label class="label">Section</label>
                 <div class="control">
-                    <div class="select">
-                        <select>
+                    <div class="select input">
+                        <select ng-model="user.section">
                       <option value="Please select one option" disabled>Select dropdown</option>
-                      <option></option>
-                      <option></option>
+                      
                     </select>
                     </div>
                 </div>
@@ -112,35 +112,31 @@
             <div class="field">
                 <label class="label">Department</label>
                 <div class="control">
-                    <div class="select">
-                        <select>
+                    <div class="select input">
+                        <select ng-model="user.department">
                       <option value="Please select one option" disabled>Please select one option</option>
-                      <option></option>
-                      <option></option>
+                
                     </select>
                     </div>
                 </div>
             </div>
             <div class="field">
-                <label class="label">Location of Work</label>
+                <label class="label">Area of Work</label>
                 <div class="control">
-                    <div class="select">
-                        <select>
+                    <div class="select input">
+                        <select ng-model="user.area_of_work">
                       <option value="Please select one option" disabled>Please select one option</option>
-                      <option></option>
-                      <option></option>
+                      
                     </select>
                     </div>
                 </div>
             </div>
             <div class="field">
-                <label class="label">Location of Origin</label>
+                <label class="label">LGA of Origin</label>
                 <div class="control">
-                    <div class="select">
-                        <select>
+                    <div class="select input">
+                        <select ng-model="user.lga_of_origin">
                       <option value="Please select one option" disabled>Please select one option</option>
-                      <option></option>
-                      <option></option>
                     </select>
                     </div>
                 </div>
@@ -148,11 +144,9 @@
             <div class="field">
                 <label class="label">Qualification</label>
                 <div class="control">
-                    <div class="select">
-                        <select>
+                    <div class="select input">
+                        <select ng-model="user.qual">
                       <option value="Please select one option" disabled>Please select one option</option>
-                      <option></option>
-                      <option></option>
                     </select>
                     </div>
                 </div>
@@ -160,7 +154,7 @@
             <div class="field">
                 <label class="label">Date of Employement</label>
                 <div class="control has-icons-left">
-                    <input class="input" type="date" placeholder="DATE OF EMPLOYEMENT" style="cursor:pointer">
+                    <input ng-model="user.date_of_empl" class="input" type="date" placeholder="DATE OF EMPLOYEMENT" style="cursor:pointer">
                     <span class="icon is-small is-left">
                             <i class="fa fa-calendar"></i>
                         </span>
@@ -168,33 +162,31 @@
             </div>
             <div class="field">
                 <label class="label">Grade Level</label>
-                <div class="control">
+                <div class="control input">
                     <div class="select">
-                        <select>
+                        <select ng-model="grade_level">
                       <option value="Please select one option" disabled>Please select one option</option>
-                      <option></option>
-                      <option></option>
+                      
                     </select>
                     </div>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Next of Kin</label>
-                <div class="control">
+                <div class="control input ">
                     <div class="select">
-                        <select>
+                        <select ng-model="user.next_of_kin">
                       <option value="Please select one option" disabled>Please select one option</option>
-                      <option></option>
-                      <option></option>
+                      
                     </select>
                     </div>
                 </div>
             </div>
             <div class="field">
                 <label class="label">Marital Status</label>
-                <div class="control">
+                <div class="control input">
                     <div class="select">
-                        <select>
+                        <select ng-model="user.marital.status">
                       <option value="Please select one option" disabled>Please select one option</option>
                       <option>Single</option>
                       <option>Married</option>
@@ -207,29 +199,30 @@
             <div class="field">
                 <label class="label">Home Address</label>
                 <div class="control">
+                    <section ng-model="user.home_address">
                     <textarea class="textarea" placeholder="HOME ADDRESS"></textarea>
+                </section>
                 </div>
             </div>
             </div>
             <div class="field">
                 <div class="control">
                     <label class="checkbox">
-                    <input type="checkbox">
-                  <span class="fa fa-exclamation-triangle"> I accept that the information above are true and correct</span>
+                    <input ng-model="user.check" type="checkbox">&nbsp I accept that the information above are true and correct
                   </label>
                 </div>
             </div>
             <div class="field is-grouped">
                 <div class="control">
-                    <button class="button is-link">Submit</button>
+                    <button ng-click="save();" class="button is-link">Submit</button>
                 </div>
                 <div class="control">
-                    <button class="button is-danger">Cancel</button>
+                    <button  class="button is-light">Cancel</button>
                 </div>
             </div>
         </form>
     </section>
+</div>
     <script src="../js/angular.min.js"></script>
 </body>
-
 </html>
