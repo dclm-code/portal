@@ -1,23 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <title>GROUP</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../../css/bulma.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../fontawesome/css/all.min.css">
-</head>
-
-<body>
-        <div ng-app="dclm-app" ng-controller="group_lgas">
     <form class="form">
     <div class="field">
        <h1 class="title is-2"> Enter State</h1><br>
         <div class="control">
-            <div class="select input">
-                <select class="input" ng-model="group_lgas.state_id">
-                  <option >Select State id</option>
+            <div class="select" style="width: 100%">
+                <select class="input" ng-model="group_lga.state_id">
+                  <option value="0">Select State</option>
+                  <option value="1">LAGOS</option>
+                  <option value="2">OGUN</option>
+                  <option value="3">OYO</option>
+                  <option value="4">EKITI</option>
+                  <option value="5">DELTA</option>
+                  <option value="9">KANO</option>
+                  <option value="7">BORNO</option>
+                  <option value="6">ONDO</option>
+                  <option value="10">OSUN</option>
+                  <option value="11">BENUE</option>
+                  <option value="12">JIGAWA</option>
                   
                 </select>
             </div>
@@ -25,17 +24,17 @@
     </div>
 
     <div class="field">
-        <label class="label">Local Government Name/Group</label>
+        <label class="label">Local Government code</label>
         <div class="control">
-            <input ng-model="group_lgas.lgas_name" class="input" type="text" placeholder="Text input">
+            <input ng-model="group_lga.local_govt_code" class="input" type="text" placeholder="Text input">
         </div>
         
     </div>
 
     <div class="field">
-        <label class="label">Local Government Code</label>
+        <label class="label">Local Government name</label>
         <div class="control">
-            <input ng-model="group_lgas.lga_cod" class="input" type="text" placeholder="Text input">
+            <input ng-model="group_lga.local_govt_name" class="input" type="text" placeholder="Text input">
         </div>
     </div>
 
@@ -48,8 +47,4 @@
         </div>
     </div>
 </form>
-    <script src="../js/angular.min.js"></script>
-    <script src="..js/regions.js"></script>
-</body>
-
-</html>
+   
