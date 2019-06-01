@@ -1,0 +1,46 @@
+<style>
+.anchor{
+    color: black
+}
+.anchor:active {
+    color: black;
+}
+.anchor:link{
+    color: #000;
+}
+.anchor:visited{
+    color: #000;
+}
+</style>
+<h1 class="title is-2">
+Office Memo/Request
+</h1>
+<div class="level">
+<div class="level-item">&nbsp;</div>
+<a href="#/compose" class="navbar-item is-outlined">
+<span class="tag is-success is-spaced">+</span> &nbsp; &nbsp; Compose
+</a>
+</div>
+
+<table class="table is-striped is-hoverable" ng-controller="messagelist" style="cursor: pointer">
+    <thead>
+        <tr>
+        <th>SN</th>
+        <th >SENDER</th>
+        <th style="width: 200px">SUBJECT</th>
+        <th style="width: 400px">MESSAGE</th>
+        <th>ATTACHMENT</th>
+        <th>ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="message in messages">
+        <td><a class="anchor" href="#/read_message/{{message.id}}">{{message.id}}</a></td>
+        <td><a class="anchor" href="#/read_message/{{message.id}}">{{message.sender}}</a></td>
+        <td><a class="anchor" href="#/read_message/{{message.id}}">{{message.subject}}</a></td>
+        <td style="font-size:80%"><a class="anchor" href="#/read_message/{{message.id}}">{{message.message}}</a></td>
+        <td><a class="anchor" href="#/read_message/{{message.id}}">{{message.filename}}</a></td>
+        <td><a href="#/read_message/{{message.id}}"><i class="fa fa-envelope-open" title="Read"></i></a></td>
+    </tr>
+    </tbody>
+</table>
