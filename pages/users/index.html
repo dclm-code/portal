@@ -1,12 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    come and see
-</body>
-</html>
+<div class="level">
+    <div class="level-item">&nbsp;</div>
+    <a href="#/userform" class="button is-medium level-right">
+        <span class="tag is-success is-spaced">+</span>&nbsp;&nbsp;Add New
+    </a>
+</div>
+
+<table class="table is-striped" ng-controller="userlist">
+    <thead>
+        <tr>
+            <th>SN</th>
+            <th>STAFF NAME</th>
+            <th>STAFF ID</th>
+            <th>SECTION</th>
+            <th>DEPARTMENT</th>
+            <th colspan="3">ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="user in users">
+            <td>{{user.id}}</td>
+            <td>{{user.first_name}}&nbsp;{{user.surname}}</td>
+            <td>{{user.staff_id}}</td>
+            <td>{{user.section_id}}</td>
+            <td>{{user.department_id}}</td>
+            <td>
+                <a href="#/view_user/{{user.id}}">
+                    <i class="fa fa-eye" title="view"></i>
+                </a>
+            </td>
+            <td>
+                <a href="#/edit_user/{{user.id}}">
+                    <i class="fa fa-edit" title="edit"></i>
+                </a>
+            </td>
+            <td>
+                <a ng-click="deleteuser(user.id);" href="javascript:void(0);">
+                    <!--a href="#/remark/{{user.id}}"-->
+                    <i class="fa fa-comment" title="Remark"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
