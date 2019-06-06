@@ -136,15 +136,43 @@ app.config(function($routeProvider, $locationProvider) {
 
     //Messaging/Intra Office memo routes
     .when('/message', {
-        templateUrl: 'messages/index.html',
-        controller: 'messageController'
-    })
+            templateUrl: 'messages/index.html',
+            controller: 'messageController'
+        })
+        .when('/compose', {
+            templateUrl: 'messages/message.html',
+            controller: 'messageController'
+        })
+        .when('/read_message/:message', {
+            templateUrl: 'messages/read.html',
+            controller: 'readMessageController'
+        })
+        .when('/reply_message/:message', {
+            templateUrl: 'messages/reply.html',
+            controller: 'replyMessageController'
+        })
+        .when('/forward_message/:message', {
+            templateUrl: 'messages/forward.html',
+            controller: 'forwardMessageController'
+        })
 
     //region routes
     .when('/region', {
-        templateUrl: 'regions/index.html',
-        controller: 'regionController'
-    })
+            templateUrl: 'regions/index.html',
+            controller: 'regionController'
+        })
+        .when('/regionform', {
+            templateUrl: 'regions/region.html',
+            controller: 'regionController'
+        })
+        .when('/view_region/:region', {
+            templateUrl: 'regions/view.html',
+            controller: 'viewregionController'
+        })
+        .when('/edit_region/:region', {
+            templateUrl: 'regions/edit.html',
+            controller: 'editregionController'
+        })
 
     //section routes
     .when('/section', {
