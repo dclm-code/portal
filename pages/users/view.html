@@ -1,12 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<ul>
+    <li><b>Qualification Code</b>: {{qualification.qualification_code}}</li>
+    <li><b>Qualification Name</b>: {{qualification.qualification_name}}</li>
+</ul>
+
+
+
+<ul>
+    <li><b>Staff ID:</b> {{user.staff_id}}</li>
+    <li><b>Staff Name:</b> {{user.surname | uppercase}}, {{user.first_name }}&nbsp;{{user.middle_name}}</li>
+    <li><b>E-mail</b>:{{user.email}}</li>
+    <li><b>Phone</b>:{{user.phone_number}}</li>
+    <li><b>Section</b>:{{user.section_id}}</li>
+    <li><b>Department</b>:{{user.department_id}}</li>
+    <li><b>Qualification</b>:{{user.qualification_id}}</li>
+    <li><b>Date Employed</b>:{{user.date_of_employment}}</li>
+    <li><b>Last Promotion</b>:{{user.date_of_last_promotion}}</li>
+    <li><b>Grade Level</b>:{{user.grade_level_id}}</li>
+    <li><b>Date of Birth</b>:{{user.date_of_birth}}</li>
+    <li><b>Place of Deployment</b>:{{user.location_of_work_id}}</li>
+    <li><b>Marital Status</b>:{{user.marital_status}}</li>
+    <li><b>Place of Origin</b>:{{user.location_of_origin_id}}</li>
+    <li><b>Home Address</b>:{{user.home_address}}</li>
+</ul>
