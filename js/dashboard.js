@@ -176,7 +176,19 @@ app.config(function($routeProvider, $locationProvider) {
 
     //section routes
     .when('/section', {
-        templateUrl: 'sections/index.html',
-        controller: 'sectionController'
-    })
+            templateUrl: 'sections/index.html',
+            controller: 'sectionController'
+        })
+        .when('/sectionform', {
+            templateUrl: 'sections/section.html',
+            controller: 'sectionController'
+        })
+        .when('/view_section/:section', {
+            templateUrl: 'sections/view.html',
+            controller: 'viewSectionController'
+        })
+        .when('/edit_section/:section', {
+            templateUrl: 'sections/edit.html',
+            controller: 'editSectionController'
+        })
 });
