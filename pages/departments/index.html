@@ -1,13 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Document</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<div class="level">
+<div class="level-item">&nbsp;</div>
+<a href="#/deparmentform" class="button is-medium level-right">
+<span class="tag is-success is spaced">+</span>&nbsp;Add New
+</a>
+</div>
+<table class="table is-striped" ng-controller="departmentlist">
+<thead>
+<tr>
+<th>SN</th>
+<th>DEPARTMENT CODE</th>
+<th>DEPARTMENT NAME</th>
+<th colspan="3">ACTIONS</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+<tr ng-repeat="department in departments">
+<td>{{department.id}}</td>
+<td>{{department.department_code}}</td>
+<td>{{department.department_name}}</td>
+
+<td>
+<a href="#/view_department/{{department.id}}">
+<i class="fa fa-eye" title="view"></i>
+</a>
+</td>
+
+<td>
+    <a href="#/edit_department/{{department.id}}">
+        <i class="fa fa-edit" title="edit"></i>
+        </a>
+    </td>
     
-</head>
-<body>
-    Department
-</body>
-</html>
+<td>
+<a ng-click="deletedepartment(department.id);" href="javascript:void(0)">
+<i class="fa fa-trash-alt" title="delete"></i></a></td>
+</tr>
+</table>
