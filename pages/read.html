@@ -1,0 +1,19 @@
+<div style="margin: 20px 70px 20px 20px">
+    <h1 class="title is-2">{{message.subject}}</h1><br>
+    <div class="columns">
+    <div class ="column"><h1 class="title is-5">{{message.sender}}</h1></div>
+    <div class="column is-2">
+        <a href="#/reply_message/{{message.id}}"><button class="button is-small" title="Reply" style="border: none"><i class="fa fa-reply"></i></button></a>
+        <a href="#/forward_message/{{message.id}}"><button class="button is-small" title="Forward" style="border: none"><i class="fa fa-share"></i></button></a>
+    </div>
+    </div>
+    <div class="title is-6">To: {{message.receiver}}</div><br>
+    <div class="content">
+    <p style="text-align: justify">{{message.message}}</p><br>
+    <a href="../../attachments/{{message.filename}}" style="width: 300px; background-color: rgb(72, 160, 204); color:white" download="{{message.sender}}"><b>CLICK HERE TO DOWNLOAD ATTACHMENTS </b></a><a href="../../attachments/{{message.filename}}" download="{{message.sender}}">&nbsp;&nbsp;&nbsp;<i class="fa fa-download" style="background-color: white; color:rgb(72, 160, 204)"></i></a>
+
+    </div>
+    
+    <a href="#/reply_message/{{message.id}}"><button class="button" title="Reply"><i class="fa fa-reply">&nbsp;Reply</i></button></a>
+    <a href="#/forward_message/{{message.id}}"><button class="button" title="Forward"><i class="fa fa-share">&nbsp;Forward</i></button></a>
+</div>

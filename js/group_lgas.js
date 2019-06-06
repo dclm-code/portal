@@ -1,17 +1,82 @@
-var app = angular.module('dclm-app', []);
-var baseUrl = "http://localhost:8000/api/";
-app.controller('group_lgas', function($scope, $http, $filter){
-    this.group_lgas = {lga_name:'', lga_code:'' , state_id:'' }
+var baseUrl = "http://10.10.11.185:8000/api/";
+app.controller('group_lgaController', function($scope, $http, $filter){
+    this.group_lga = {local_govt_name:'', local_govt_code:'' , state_id:'' }
+
     $scope.group = function(){
         $http({
             url: baseUrl+'group_lgas',
             method: "POST",
-            data: this.group_lgas,
+            data: this.group_lga,
             contenttype: 'application/json'
         }).then((response) => {
-             $scope.info = response.data.message;
+            console.log(response);
+             $scope.info = response.data;
+             console.log($scope.info);
         }, function(error) {
-            $scope.error = error.data.message
+            console.log(error);
+            $scope.error = error
         })
         }
+    $scope.deletegroup_lga = function(id){
+        $http({
+            url: baseUrl + "group_lgas/"+id,
+            method:"DELETE",
+            contentType: 'application/json'
+
+        }).then((data) => {
+            $scope.info = data.data.message;
+            setTimeout(window.location.reload(), 1000);
+        }, (error) =>{
+            $scope.uerror = error
+
         })
+    }    
+})
+
+        app.controller('grouplist', function($scope, $http){
+        $http.get(baseUrl + "group_lgas")
+            .then((data) => {
+                $scope.group_lgas = data.data;
+                console.log($scope.group_lgas);
+            }, (err)=>{
+                $scope.error;
+            })
+    })
+
+    app.controller('viewGroupLgaController', function($scope, $http, $routeParams){
+        var id = $routeParams.group_lga;
+        $http.get(baseUrl + "group_lgas/" + id)
+            .then((data) => {
+                $scope.group_lga = data.data;
+            }, (err)=>{
+                $scope.gerror = err;
+            })
+        })
+
+        app.controller('editGroupLgaController', function($scope, $http, $routeParams){
+            var id = $routeParams.group_lga;
+            this.group_lga = {local_govt_name:'', local_govt_code:'' , state_id:'' }
+            $http.get(baseUrl + "group_lgas/" + id)
+                .then((data) => {
+                    $scope.group_lga = data.data;
+                    $scope.edit = 1
+                }, (err)=>{
+                    $scope.ederror = err;
+                })
+
+                $scope.update = function(){
+                    $http({
+                        url: baseUrl+"group_lgas/"+id,
+                        method: "PUT",
+                        data: this.group_lga,
+                        contentType: 'application/json'
+
+                    }).then((data) => {
+                        $scope.info = data.data.message
+                        console.log(data)
+                    }, (error) => {
+                        console.log(error)
+                        $scope.ederror = error
+                    })
+                }
+            })

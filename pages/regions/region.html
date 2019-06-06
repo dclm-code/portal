@@ -1,0 +1,29 @@
+<header>
+        <h1 class="title is-2">ENTER YOUR REGION</h1>
+</header>
+<div>
+        <form class="form">
+            <div class="field">
+                <label class="label">Region Code</label>
+                <div class="control">
+                    <input ng-model="region.region_code" class="input" type="text" placeholder="Text input">
+                </div>
+            </div>
+        
+            <div class="field">
+                <label class="label">Region Name</label>
+                <div class="control">
+                    <input ng-model="region.region_name" class="input" type="text" placeholder="Text input">
+                </div>
+            </div>
+        
+            <div class="field is-grouped">
+                <div class="control">
+                    <button ng-click="sav();" class="button is-link">Submit</button>
+                </div>
+                <div class="control">
+                    <button class="button is-light">Cancel</button>
+                </div>
+            </div>
+        </form>
+</div>

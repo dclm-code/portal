@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Country of Work</title>
-    <link rel="stylesheet" href="../../css/bulma.min.css">
-    <link rel="stylesheet" href="../../fontawesome/css/all.min.css">
-
-</head>
-
-<body>
 <header>
         <h1 class="title is-2">ADD COUNTRY</h1>
     </header>
-    <div ng-app="dclm-app" ng-controller="country">
-        <form class="form">
-
-        </div>
+        <form class="form">     
         <section>
             <div class="field">
                 <label class="label">Country Code</label>
@@ -26,7 +10,6 @@
                     <input ng-model = "country.country_code" type="text" class="input" placeholder="Country Code">
                 </div>
             </div>
-    
             <div class="field">
                 <label class="label">Country Name</label>
                 <div class="control has-icons-left">
@@ -41,12 +24,9 @@
                     <button ng-click="save();" class="button is-link">Submit</button>
                 </div>
                 <div class="control">
-                    <button class="button is-link">Cancel</button>
+                    <button class="button is-light">Cancel</button>
                 </div>
             </div>
-    
+    </section>
        </form>
-        </section>
-</body>
-
-</html>
+       
