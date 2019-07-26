@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Portal::User Sign In</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Raleway|Roboto&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/Deeper-Life-Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/master.css">
+</head>
+
+<body ng-app="dclm-app">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="index.html" style="padding:5px">
+                <img src="images/Deeper-Life-Logo.png" width="50px" height="50px" alt="Deeper Christian Life Ministry logo">
+            </a>
+            <a class="navbar-burger burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu" id="navbarBasic">
+            <div class="navbar-end">
+                <a href="index.html" class="navbar-item menu-item">
+                    Home&nbsp;&nbsp;&nbsp;&nbsp;|
+                </a>
+                <a href="signup.html" class="navbar-item menu-item">
+                    Register
+                </a>
+            </div>
+        </div>
+    </nav><br/>
+    <div class="block columns is-centered is-vcentered">
+        <div class="column is-one-third" style="padding: 10px;">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-title">
+                        <i class="fa fa-2x fa-lock"></i>&nbsp;
+                        <h1 class="title is-3">User Login</h1>
+                    </div>
+                    <div class="media" style="padding: 10px;">
+                        <div class="media-right">
+                            <figure class="image is-48x48 has-padding-2">
+                                <img src="images/Deeper-Life-Logo.png" alt="DCLM Logo">
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-content" ng-controller="dSignIn">
+                    <form id="frmSignIn" name="frmSignIn" class="form">
+                        <div class="field">
+                            <label class="label" for="staff_id">Staff ID</label>
+                            <div class="control has-icons-left">
+                                <input ng-model="dsignin.staff_id" type="text" id="staff_id" name="staff_id" class="input" required>
+                                <span class="icon is-small is-left">
+                                        <i class="fa fa-user"></i>
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label for="password" class="label">Password</label>
+                            <div class="control has-icons-left">
+                                <input ng-model="dsignin.password" type="password" id="password" name="password" class="input" required>
+                                <span class="icon is-small is-left">
+                                        <i class="fa fa-lock"></i>
+                                    </span>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <input type="checkbox" name="chkRemember"> Remember me on this system.
+                            </div>
+                        </div>
+                        <div class="field">
+                            forgot your password? <a href="#">click here to reset it</a>.
+                        </div>
+                        <div class="field">
+                            <div class="control">
+                                <button id="btnLogin" name="btnLogin" type="button" ng-click="signin();" class="button is-link is-large">Sign In</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    &copy;2019&nbsp;DEEPER CHRISTIAN LIFE MINISTRY
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.serializeToJSON.min.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/bulma-toast.min.js"></script>
+    <script src="js/utility.js"></script>
+    <script src="js/master.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/signin.js"></script>
+
+</body>
+
+</html>
+
+</html>

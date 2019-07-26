@@ -1,0 +1,42 @@
+<div class="level">
+    <div class="level-item">&nbsp;</div>
+    <a href="#/stateform" class="button is-medium level-right">
+        <span class="tag is-success is -spaced">+</span>
+        Add New
+</a>
+        </div>
+<table class="table is-striped" ng-controller="statelist">
+    <thead>
+        <tr>
+            <th>SN</th>
+            <th>COUNTRY ID</th>
+            <th>STATE CODE</th>
+            <th>STATE NAME</th>
+            <th colspan ="3">ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="state in states">
+            <td>{{state.id}}</td>
+            <td>{{state.country_id}}</td>
+            <td>{{state.state_code}}</td>
+            <td>{{state.state_name}}</td>
+            <td>
+                <a href="#/view_state/{{state.id}}">
+                    <i class="fa fa-eye" title="view"></i>
+                </a>
+            </td>
+
+            <td>
+                <a href="#/edit_state/{{state.id}}">
+                    <i class="fa fa-edit" title="edit"></i> 
+                </a>
+            </td>
+            <td>
+                <a ng-click="deletestate(state.id);" href="javascript:void(0)">
+                    <i class="fa fa-trash-alt" title="delete"></i>
+                </a>     
+            </td>
+    </tr>
+    </tbody>
+    </table>

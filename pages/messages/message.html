@@ -1,0 +1,45 @@
+<header class="hero">
+    <h1 class="title is-2"> MESSAGE</h1>
+</header>
+    <div>
+    <main>
+    <form class="form" name="message-form" enctype="multipart/form-data">
+      <div class="field">
+        <label class="label"> Receiver </label>
+        <div class="control has-icons-left">
+            <input ng-model="Message.receiver" class="input" type="text" placeholder="e.g Alex Smith">
+            <span class="icon is-small is-left">
+                <i class="fa fa-user"></i>
+            </span>
+        </div>
+    </div>
+    
+    <div class="field">
+      <label class="label">Subject</label>
+      <div class="control">
+        <input ng-model="Message.subject" class="input" type="text" placeholder="Subject">
+      </div>
+    </div>
+  <div class="field">
+      <label class="label">Message</label>
+      <div class="control">
+          <textarea ng-model="Message.message" class="textarea" placeholder="Type your message"></textarea>
+      </div>
+  </div>
+  <div class="field">
+      <label class="label">Attachment</label>
+      <div class="control">
+        <input type="file" ng-model="filename" onchange = "angular.element(this).scope().filechange(e);" class="input">
+      </div>
+    </div>
+  <div class="field is-grouped">
+      <div class="control">
+          <button ng-click="save();" class="button is-link" onclick="submitForm" title="Send">Send</button>
+      </div>
+      <div class="control">
+          <button ng-click="" class="button is-link">Cancel</button>
+      </div>
+  </div>
+  </form>
+</main>
+</div>

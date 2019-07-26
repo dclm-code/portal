@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/all.min.css">
+</head>
+
+<body>
+    <div ng-app="dclm-app">
+        <div class="columns">
+            <aside class="menu column is-2 is-bordered box">
+                <p class="menu-label">
+                    ADMIN PANEL
+                </p>
+                <figure class="image is-64x64">
+                    <img class="is-rounded is-centered" src="../images/Deeper-Life-Logo.png" alt="">
+                    <figcaption>{{user}}</figcaption>
+                </figure>
+                <ul class="menu-list">
+                    <li><a href="#/country">Countries</a></li>
+                    <li><a href="#/state">States</a></li>
+                    <li><a href="#/region">Regions</a></li>
+                    <li><a href="#/group_lga">Groups/LGAs</a></li>
+                    <li><a href="#/section">Sections</a></li>
+                    <li><a href="#/department">Departments</a></li>
+                    <li><a href="#/staff">Staff Members</a></li>
+                    <li><a href="#/qualification">Qualifications</a></li>
+                    <li><a href="#/grade_level">Grade Levels</a></li>
+                    <li><a href="#/message">Message</a></li>
+                    <li><a href="#/applyleave">Leave Form</a></li>
+                    <li><a href="#/manageleave">Manage Leave</a></li>
+                    <li><a href="#/fuel">Fuel Request</a></li>
+                    <li><a href="#/fuelapprove">Fuel Approval</a></li>
+                </ul>
+            </aside>
+            <div id="display" name="display" class="block column is-10" ng-view></div>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/angular.js"></script>
+    <script src="../js/angular-route.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/message.js"></script>
+    <script src="../js/qualification.js"></script>
+    <script src="../js/group_lgas.js"></script>
+    <script src="../js/country.js"></script>
+    <script src="../js/department.js"></script>
+    <script src="../js/grade_level.js"></script>
+    <script src="../js/region.js"></script>
+    <script src="../js/state.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/section.js"></script>
+    <script src="../js/leaveform.js"></script>
+    <script src="../js/fuel.js"></script>
+</body>
+
+</html>

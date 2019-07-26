@@ -1,0 +1,191 @@
+<h1 class="is-title is2">Leave Forms</h1>
+<div>
+    <section>
+        <form class="form" name="leave-form">
+            <div class="field">
+                <label class="label"> Staff ID </label>
+                <div class="control has-icons-left">
+                    <input ng-model="leaveform.staff_id" class="input" type="text" placeholder="STAFF ID" disabled>
+                    <span class="icon is-small is-left">
+                        <i class="fa fa-id-card"></i>
+                    </span>
+                </div>
+            </div>
+                <div class="field">
+                    <label class="label"> Staff Name </label>
+                    <div class="control has-icons-left">
+                        <input ng-model="leaveform.staff_name" class="input" type="text" placeholder="STAFF NAME" disabled>
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-user"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label"> Department </label>
+                    <div class="control has-icons-left">
+                        <input ng-model="leaveform.department" class="input" type="text" placeholder="DEPARTMENT" disabled>
+                        <span class="icon is-small is-left">
+                            <i class="fa fa-work"></i>
+                        </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Date of Employement</label>
+                    <div class="control has-icons-left">
+                        <input ng-model="leaveform.date_of_employment" class="input" type="date" placeholder="DATE OF EMPLOYEMENT" style="cursor:pointer" disabled>
+                        <span class="icon is-small is-left">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Period of Proposed Leave</label>
+                    <div class="control">
+                        <div>
+                            <input value="{{leaveform.period_leave_day}}/{{leaveform.period_leave_month}}/{{leaveform.period_leave_year}}" type="text" class="input" disabled>
+                        </input>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Proposed Resumption Date</label>
+                    <div class="control">
+                        <div>
+                            <input value="{{leaveform.period_leave_day_resume}}/{{leaveform.period_leave_month_resume}}/{{leaveform.period_leave_year}}" type="text" class="input" disabled>
+                        </input>
+                        </div>
+                    </div>
+                </div>
+            <div class="field">
+                <label class="label">Leave Entitled</label>
+                <div class="control">
+                    <div>
+                        <input ng-model="leaveform.entitled" type="number" class="input" disabled>
+                    </input>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Name of Reliever</label>
+                <div class="control">
+                    <div>
+                        <input ng-model="leaveform.reliever" type ="text" class="input" disabled>
+                    </input>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Number of Days Being Requested</label>
+                <div class="control">
+                    <div>
+                        <input ng-model="leaveform.days_requested" type="number" class="input" id="number_days" disabled>
+                    </input>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Balance ofLeave</label>
+                <div class="control">
+                    <div>
+                        <input ng-model="leaveform.balance_of_leave" type="number" class="input" disabled>
+                    </input>
+                    </div>
+                </div>
+            </div>
+                <div class="field">
+                    <label class="label">Days of Christian Public Holiday Covered </label>
+                    <div class="control">
+                        <div>
+                            <input type="number" ng-model="leaveform.public_holiday" class="input" disabled>
+                        </input>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Home Address</label>
+                    <div class="control">
+                        <textarea ng-model="leaveform.home_address" class="textarea" placeholder="HOME ADDRESS" disabled></textarea disabled>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Recommendation by the Head of Department</label>
+                    <div class="control">
+                        <textarea ng-model="leaveform.hod_remark" class="textarea" placeholder="HOD RECOMMENDATION" disabled></textarea disabled>
+                    </div>
+                </div>
+                <div class="field">
+                <label class="label">Approved Period of Vacation </label>
+                    <div class="control">
+                        <div>
+                            <input type="text" ng-model="leaveform.period_leave_approved" class="input" disabled>
+                        </input>
+                        </div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Date of Resumption </label>
+                        <div class="control">
+                            <div>
+                                <input type="text" ng-model="leaveform.date_resume" class="input" disabled>
+                            </input>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="field">
+                        <label class="label">Basic Salary </label>
+                            <div class="control">
+                                <div>
+                                    <input type="number" ng-model="leaveform.basics" class="input" id="basics" disabled>
+                                </input>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="field">
+                            <label class="label">Leave Allowance</label>
+                            <div class="control">
+                                <div>
+                                    <input ng-model="leaveform.allowance" type="text" class="input" disabled>
+                                </input>
+                                </div>
+                            </div>
+                        </div>
+                        
+                <div class="field">
+                    <label class="label">Recommendation by the Administrative Manager</label>
+                    <div class="control">
+                        <textarea ng-model="leaveform.admin_remark" class="textarea" placeholder="ADMIN RECOMMENDATION" disabled></textarea disabled>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Recommendation by the Church Secretary</label>
+                    <div class="control">
+                        <textarea ng-model="leaveforms.cs_remark" class="textarea" placeholder="CS RECOMMENDATION" ></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">CS APPROVAL </label>
+                        <div class="control">
+                            <div class= "select" style="width: 100%">
+                                <select ng-model="leaveforms.cs_approved" type="text" required>
+                                    <option value="0" disabled>Please select one option</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Declined">Declined</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                <p style="background-color: mediumblue; color: white; width: 100%"><b>{{info}}</b></p><br><br>
+
+<div class="field is-grouped">
+    <div class="control">
+        <button ng-click="save();" class="button is-link">Remark</button>
+    </div>
+    <div class="control">
+        <button class="button is-light">Cancel</button>
+    </div>
+</div>
+</form>
+</section>
+</div>

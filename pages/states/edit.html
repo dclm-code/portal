@@ -1,0 +1,49 @@
+<header>
+        <h class="title is-2">ADD STATE</h2>
+</header>  
+    <section>  
+        <div>
+        <form class="form">
+        <div class="field">
+                <label class="label">COUNTRY</label> 
+                <div class="control input">
+
+                    <div class="select">
+                <select ng-model="state.country_id">
+                    <option value="0">Select option</option>
+                    <option value="1">Nigeria</option>
+                    <option value="2">Ghana</option>
+                    <option value="3">Gambia</option>           
+                  </select>
+            </div>
+        </div>
+    </div>
+        <br>
+        <div class="field">
+            <label class="label">STATE CODE</label>
+            <div class="control">
+                <input ng-model="state.state_code" class="input" type="text" placeholder="xxx">
+            </div>
+        </div>
+        </div>
+        <br>
+        <div class="control">
+            <label class="label">STATE NAME</label>
+            <div class="control">
+                <input ng-model="state.state_name" class="input" type="text" placeholder="Text input">
+            </div>
+            <div class="field is-grouped is-grouped-left">
+                <div class="control">
+                <button ng-click="update();" class="button is-link">Submit</button>            
+                </div>
+    
+                <div class="control">
+                <button  class="button is-light">Cancel</button>
+                              
+            </div>
+        </div>
+
+    </form>
+
+
+

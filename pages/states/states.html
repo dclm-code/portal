@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>State ID</title>
+    <link rel="stylesheet" href="../../css/bulma.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../fontawesome/css//all.min.css">
+</head>
+
+<body>
+        <header style="padding: 24px 12px 48px">
+                <h1 class="title is-1">STATE</h1>
+            </header>
+    <div ng-app="dclm-app" ng-controller="state">
+    <form class="form">
+            
+        <div class="control ">
+            <div class="select input">
+                <label class="label">COUNTRY</label>
+                <select>
+                    <option ng-model="state.Country_name">Select option</option>
+                  </select>
+            </div>
+        </div><br><br><br>
+        <div class="field">
+            <label class="label">State Code</label>
+            <div class="control">
+                <input ng-model="state.state_code" class="input" type="text" placeholder="xxx">
+            </div>
+        </div>
+        </div>
+        <br><br>
+        <div class="control">
+            <label class="label">State Name</label>
+            <div class="control">
+                <input ng-model="state.state_name"   class="input" type="text" placeholder="Text input">
+            </div><br>
+            <div class="field is-grouped is-grouped-left">
+                <p class="control">
+                    <a ng-click="save" class="button is-primary">
+                                Submit
+                              </a>
+                </p>
+                <p class="control">
+                    <a class="button is-light">
+                                Cancel
+                              </a>
+                </p>
+            </div>
+        </div>
+     </form>
+</div>
+
+</body>
+
+</html>

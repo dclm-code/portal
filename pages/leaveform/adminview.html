@@ -1,0 +1,45 @@
+<style>
+    .anchor{
+        color: black;
+        font-weight: bold;
+    }
+    .anchor:active {
+        color: black;
+        font-weight: normal;
+    }
+    .anchor:link{
+        color: #000;
+        font-weight: bold;
+    }
+    .anchor:visited{
+        color: #000;
+        font-weight: normal
+    }
+    </style>
+<h1 class="title is-2">LEAVE FORMS</h1>
+<table class="table is-striped is-hoverable" ng-controller="adminView" style="cursor: pointer">
+    <thead>
+        <tr>
+            <th>SN</th>
+            <th style="width: 250px">STAFF NAME</th>
+            <th>PERIOD OF LEAVE</th>
+            <th>HOD Remark</th>
+            <th>Admin Approval</th>
+            <th>CS Approval</th>
+            <th>ACTION</th>
+            <th>PRINT</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="leaveform in leaveforms | orderBy: '-id' ">
+        <td><a class="anchor" href="#/admin/{{leaveform.id}}">{{leaveform.staff_id}}</a></td>
+        <td><a class="anchor" href="#/admin/{{leaveform.id}}">{{leaveform.name}}</a></td>
+        <td><a class="anchor" href="#/admin/{{leaveform.id}}">{{leaveform.period_leave_month}}</a></td>
+        <td><a class="anchor" href="#/admin/{{leaveform.id}}">{{leaveform.hod_approved}}</td>
+        <td><a class="anchor" href="#/admin/{{leaveform.id}}">{{leaveform.admin_approved}}</td>
+        <td><a class="anchor" href="#/admin/{{leaveform.id}}">{{leaveform.cs_approved}}</a></td>
+        <td><a href="#/admin/{{leaveform.id}}"><i class="fa fa-envelope-open" title="Read"></i></a></td>
+        <td><a href="#/status/{{leaveform.id}}" class="anchor"><i class="fa fa-print" title="Print"></i></a></td>
+    </tr>
+    </tbody>
+</table>
