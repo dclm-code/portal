@@ -1,0 +1,43 @@
+<style>
+    .anchor{
+        color: black;
+        font-weight: bold;
+    }
+    .anchor:active {
+        color: black;
+        font-weight: normal;
+    }
+    .anchor:link{
+        color: #000;
+        font-weight: bold;
+    }
+    .anchor:visited{
+        color: #000;
+        font-weight: normal
+    }
+    </style>
+<h1 class="title is-2">LEAVE FORMS</h1>
+<table class="table is-striped is-hoverable" ng-controller="csView" style="cursor: pointer">
+    <thead>
+        <tr>
+        <th>SN</th>
+        <th style="width: 250px">STAFF NAME</th>
+        <th>PERIOD OF LEAVE</th>
+        <th style="width: 200px">Admin Remark</th>
+        <th style="width: 200px">CS Remark</th>
+        <th>ACTION</th>
+        <th>PRINT</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="leaveform in leaveforms | orderBy: '-id' ">
+        <td><a class="anchor" href="#/cs/{{leaveform.id}}">{{leaveform.staff_id}}</a></td>
+        <td><a class="anchor" href="#/cs/{{leaveform.id}}">{{leaveform.name}}</a></td>
+        <td><a class="anchor" href="#/cs/{{leaveform.id}}">{{leaveform.period_leave_month}}</a></td>
+        <td><a class="anchor" href="#/cs/{{leaveform.id}}">{{leaveform.admin_approved}}</td>
+        <td><a class="anchor" href="#/cs/{{leaveform.id}}">{{leaveform.cs_approved}}</td>
+        <td><a class="anchor" href="#/cs/{{leaveform.id}}"><i class="fa fa-envelope-open" title="Read"></i></a></td>
+        <td><a href="#/status/{{leaveform.id}}" class="anchor"><i class="fa fa-print" title="PRINT"></i></a></td>
+    </tr>
+    </tbody>
+</table>

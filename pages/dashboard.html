@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DCLM PORTAL :: Administrator Panel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <link rel="stylesheet" type="text/css" href="../fontawesome/css/all.min.css">
+    <link rel="shortcut icon" href="../images/Deeper-Life-Logo.png" type="image/x-icon">
+</head>
+
+<body>
+    <div ng-app="dclm-app" ng-controller="dashController">
+        <div class="columns">
+            <nav class="navbar is-hidden-desktop is-fixed-top" role="navigation" aria-label="main navigation">
+                <div class="navbar-brand">
+                    <a href="#" class="navbar-item title is-5 has-text-primary">
+                        <i class="fas fa-tachometer-alt"></i> ADMIN PANEL
+                    </a>
+                    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+                <div id="navbarBasic" class="navbar-menu">
+                    <div class="navabr-start">
+                        <img src="images/uploads/{{user.first_name}}-{{user.last_name}}_{{user.id}}.jpg" alt="user profile picture." class="image">
+                        <li><a class="navbar-item" href="#/logout">Log Out</a></li>
+                        <li><a class="navbar-item" href="#/country"><i class="fas fa-globe-africa"></i>&nbsp;Countries</a></li>
+                        <li><a class="navbar-item" href="#/state">States</a></li>
+                        <li><a class="navbar-item" href="#/region">Regions</a></li>
+                        <li><a class="navbar-item" href="#/group_lga">Groups/LGAs</a></li>
+                        <li><a class="navbar-item" href="#/section">Sections</a></li>
+                        <li><a class="navbar-item" href="#/department">Departments</a></li>
+                        <li><a class="navbar-item" href="#/staff">Staff Members</a></li>
+                        <li><a class="navbar-item" href="#/qualification">Qualifications</a></li>
+                        <li><a class="navbar-item" href="#/grade_level">Grade Levels</a></li>
+                        <li><a class="navbar-item" href="#/message"><i class="fas fa-envelope-open-text"></i>&nbsp;Messages</a></li>
+                        <li><a class="navbar-item" href="#/applyleave"><i class="fas fa-tasks"></i>&nbsp;Leave Form</a></li>
+                        <li><a class="navbar-item" href="#/manageleave"><i class="fas fa-spell-check"></i>&nbsp;Manage Leave</a></li>
+                        <li><a class="navbar-item" href="#/fuel"><i class="fas fa-file-invoice"></i>&nbsp;Fuel Request</a></li>
+                        <li><a class="navbar-item" href="#/fuelapprove"><i class="fas fa-gas-pump"></i>&nbsp;Fuel Approval</a></li>
+                    </div>
+                </div>
+            </nav>
+            <aside class="menu column is-3 is-bordered box is-hidden-mobile">
+                <div class="title is-3 has-text-primary">
+                    <i class="fas fa-tachometer-alt"></i> ADMIN PANEL
+                </div>
+                <!--figure class="image is-64x64 has-background-black">
+                    <img class="is-rounded is-centered" src="/images/LIFE-TAPES-logo.png" alt="">
+                </figure-->
+                <a class="navbar-item has-text-centered"><i class="fa fa-user"></i>
+                    {{user.first_name | uppercase}}&nbsp;{{user.surname | uppercase}}<br/>
+                    {{user.staff_id | uppercase}}
+                </a>
+                <a class="navbar-item" href="#logout" ng-click="logout();"><i class="fas fa-door-open"></i>&nbsp;Log Out</a>
+                <ul class="menu-list">
+                    <a class="navbar-item" href="#/country"><i class="fas fa-globe-africa"></i>&nbsp;Countries</a></<a>
+                    <li><a class="navbar-item" href="#/state">States</a></li>
+                    <li><a class="navbar-item" href="#/region">Regions</a></li>
+                    <li><a class="navbar-item" href="#/group_lga">Groups/LGAs</a></li>
+                    <li><a class="navbar-item" href="#/section">Sections</a></li>
+                    <li><a class="navbar-item" href="#/department">Departments</a></li>
+                    <li><a class="navbar-item" href="#/staff">Staff Members</a></li>
+                    <li><a class="navbar-item" href="#/qualification">Qualifications</a></li>
+                    <li><a class="navbar-item" href="#/grade_level">Grade Levels</a></li>
+                    <li><a class="navbar-item" href="#/message"><i class="fas fa-envelope-open-text"></i>&nbsp;Messages</a></li>
+                    <li><a class="navbar-item" href="#/applyleave"><i class="fas fa-tasks"></i>&nbsp;Leave Form</a></li>
+                    <li><a class="navbar-item" href="#/manageleave"><i class="fas fa-spell-check"></i>&nbsp;Manage Leave</a></li>
+                    <li><a class="navbar-item" href="#/fuel"><i class="fas fa-file-invoice"></i>&nbsp;Fuel Request</a></li>
+                    <li><a class="navbar-item" href="#/fuelapprove"><i class="fas fa-gas-pump"></i>&nbsp;Fuel Approval</a></li>
+                </ul>
+            </aside>
+            <div class="is-hidden"></div>
+            <div id="display" name="display" class="block column is-6" ng-view></div>
+            <div id="info" class="block column is-3">
+                {{info}}
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/angular.js"></script>
+    <script src="../js/angular-route.js"></script>
+    <script src="../js/bulma-toast.min.js"></script>
+    <script src="../js/utility.js"></script>
+    <script src="../js/master.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/country.js"></script>
+    <script src="../js/state.js"></script>
+    <script src="../js/region.js"></script>
+    <script src="../js/group_lgas.js"></script>
+    <script src="../js/department.js"></script>
+    <script src="../js/user.js"></script>
+    <script src="../js/qualification.js"></script>
+    <script src="../js/grade_level.js"></script>
+    <script src="../js/message.js"></script>
+    <script src="../js/section.js"></script>
+    <script src="../js/leaveform.js"></script>
+    <script src="../js/fuel.js"></script>
+</body>
+
+</html>

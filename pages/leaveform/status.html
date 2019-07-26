@@ -1,0 +1,49 @@
+<style>
+.status{
+font-weight: bold;
+}
+</style>
+<figure class="image is-64x64">
+    <img class="is-rounded is-centered" src="../../images/Deeper-Life-Logo.png" alt="">
+    <figcaption>{{user}}</figcaption>
+</figure>
+<div class="status">
+<p style="text-align: center">Deeper Christian Life Ministry,</p>
+<p style="text-align: center">2-10, Ayodele Okeowo Street,</p>
+<p style="text-align: center">Gbagada, Lagos State.</p>
+<br>
+<p style="text-align: right">{{ today | date : "dd/MMMM/y" }}</p>
+<p><b> Our Reference No: LLP/HQ/ADMIN/{{leaveform.period_leave_year}}/0{{leaveform.id}}</b></p>
+<div style="text-align: left; width: 300px">
+<br>
+<p> {{leaveform.name}} </p>
+<p>{{leaveform.address}}</p>
+</div>
+<br>
+<p style="text-align: center"><b>Re: Application for {{leaveform.period_leave_year}} Annual Leave</b></p>
+<br>
+<div style="text-align: justify">
+<p>We refer to your request for Annual Leave {{leaveform.period_leave_year}} as contained in the Annual Leave Form and hereby inform you that approval has been granted you to proceed on your {{leaveform.period_leave_year}} Annual Leave.</p><br>
+<p>The Leave takes effect from {{leaveform.period_leave_day}} {{leaveform.period_leave_month}}, {{leaveform.period_leave_year}} to {{leaveform.period_leave_day_resume - 1}} {{leaveform.period_leave_month_resume}}, {{leaveform.period_leave_year}} . You are expected to be in the office on {{leaveform.period_leave_day_resume}} {{leaveform.period_leave_month_resume}}, {{leaveform.period_leave_year}}. On Resumption, you should complete the attached form and submit to this office.</p><br>
+<p>While on leave, {{leaveform.reliever}} will be reliever. Please ensure proper handover.</p> <br>
+<p>Wishing you a restful holiday.</p><br>
+
+<p>Yours in His Service</p>
+<p>for: <b>Deeper Christian Life Ministry</b></p><br><br>
+<p>Authorizing Signature:</p>
+<p>Church Secretary</p>
+
+<br>
+<p>Cc: Accounts Department-Head</p>
+
+<br>
+<button onclick="myPrint()" class="button is-link">Click to Print</button>
+</pre>
+</div>
+</div>
+
+<script>
+function myPrint() {
+  window.print();
+}
+</script>

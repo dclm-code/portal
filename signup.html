@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Portal :: Staff Registration</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Montserrat|Raleway|Roboto&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="images/Deeper-Life-Logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="css/animate.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="css/master.css">
+</head>
+
+<body ng-app="dclm-app" ng-controller="userController">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a href="index.html" style="padding:5px">
+                <img src="images/Deeper-Life-Logo.png" width="50px" height="50px" alt="Deeper Christian Life Ministry logo">
+            </a>
+            <a class="navbar-burger burger" role="button" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu" id="navbarBasic">
+            <div class="navbar-end">
+                <a href="index.html" class="navbar-item menu-item">
+                            Home&nbsp;&nbsp;&nbsp;&nbsp;|
+                        </a>
+                <a href="signin.html" class="navbar-item menu-item">
+                            Log in
+                        </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container" style="padding: 10px;">
+        <header>
+            <h1 class="title is-2"> ADD STAFF MEMBER</h1>
+        </header>
+        <div>
+            <section>
+                <form id="frmUser" name="frmUser" class="form">
+                    <div class="field">
+                        <label class="label"> Staff ID </label>
+                        <div class="control has-icons-left">
+                            <input id="staff_id" name="staff_id" ng-model="user.staff_id" class="input" type="text" placeholder="STAFF ID" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-id-card"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label"> First Name </label>
+                        <div class="control has-icons-left">
+                            <input id="first_name" name="first_name" ng-model="user.first_name" class="input" type="text" placeholder="FIRST NAME" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label"> Middle Name </label>
+                        <div class="control has-icons-left">
+                            <input id="middle_name" name="middle_name" ng-model="user.middle_name" class="input" type="text" placeholder="MIDDLE NAME">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">  Surname </label>
+                        <div class="control has-icons-left">
+                            <input id="surname" name="surname" ng-model="user.surname" class="input" type="text" placeholder="SURNAME" required>
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Email</label>
+                        <div class="control has-icons-left">
+                            <input id="email" name="email" ng-model="user.email" class="input" type="email" placeholder="Email input">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Password</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="password" name="password" ng-model="user.password" class="input" type="password" placeholder="PASSWORD">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fa fa-eye" onclick="togglex(this.id);"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Confirm Password</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="password_confirmation" name="password_confirmation" ng-model="user.password_confirmation" class="input" type="password" placeholder="PASSWORD">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fa fa-2x fa-eye" onclick="togglex(this.id);"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Gender</label>
+                        <div class="control">
+                            <div class="select" style="width:100%">
+                                <select id="gender" name="gender" class="input" ng-model="user.gender">
+                                    <option value="Please select one option" disabled>Please select one option</option>
+                                    <option>Female</option>
+                                    <option>Male</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Phone Number</label>
+                        <div class="control has-icons-left">
+                            <input id="phone_number" name="phone_number" ng-model="user.phone_number" class="input" type="tel" placeholder="PHONE NUMBER">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-phone"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Date of Birth</label>
+                        <div class="control has-icons-left">
+                            <input id="date_of_birth" name="date_of_birth" ng-model="user.date_of_birth" class="input" type="date" placeholder="DATE OF BIRTH" style="cursor:pointer">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field" ng-controller="user-sections">
+                        <span>{{sections_error}}</span>
+                        <label class="label">Section</label>
+                        <div class="control">
+                            <div class="select" style="width:100%">
+                                <select id="section_id" name="section_id" class="input" ng-model="user.section_id">
+                                    <option value="Please select one option" disabled>Select dropdown</option>
+                                    <option ng-repeat="section in sections" value="{{section.id}}">{{section.section_name}}</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field" ng-controller="user-departments">
+                        <span>{{user_department_error}}</span>
+                        <label class="label">Department</label>
+                        <div class="control">
+                            <div class="select" style="width: 100%">
+                                <select id="department_id" name="department_id" class="input" ng-model="user.department_id">
+                                    <option value="0" disabled>Please select one option</option>
+                                    <option ng-repeat="department in user_departments" value="{{department.id}}">{{department.department_name}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field" ng-controller="lga">
+                        <span>{{lga_error}}</span>
+                        <label class="label">LGA of Work</label>
+                        <div class="control">
+                            <div class="select" style="width:100%">
+                                <select id="location_of_work_id" name="location_of_work_id" class="input" ng-model="user.location_of_work_id">
+                                      <option value="Please select one option" disabled>Please select one option</option>
+                                      <option ng-repeat="lga in lgas" value="{{lga.id}}">{{lga.local_govt_name}}</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field" ng-controller="lga">
+                        <span>{{lga_error}}</span>
+                        <label class="label">LGA of Origin</label>
+                        <div class="control">
+                            <div class="select" style="width: 100%">
+                                <select id="location_of_origin_id" name="location_of_origin_id" class="input" ng-model="user.location_of_origin_id">
+                                      <option value="Please select one option" disabled>Please select one option</option>
+                                      <option ng-repeat="lg1 in lgas" value="{{lg1.id}}">{{lg1.local_govt_name}}</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field" ng-controller="qualification">
+                        <span>{{qual_error}}</span>
+                        <label class="label">Qualification</label>
+                        <div class="control">
+                            <div class="select" style="width: 100%">
+                                <select id="qualification_id" name="qualification_id" class="input" ng-model="user.qualification_id">
+                                      <option value="Please select one option" disabled>Please select one option</option>
+                                      <option ng-repeat="qualf in qualifications" value="{{qualf.id}}">{{qualf.qualification_name}}</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Date of Employement</label>
+                        <div class="control has-icons-left">
+                            <input id="date_of_employment" name="date_of_employment" ng-model="user.date_of_employment" class="input" type="date" placeholder="DATE OF EMPLOYEMENT" style="cursor:pointer">
+                            <span class="icon is-small is-left">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="field" ng-controller="gradelevel">
+                        <span>{{gradelevel_error}}</span>
+                        <label class="label">Grade Level</label>
+                        <div class="control">
+                            <div class="select" style="width: 100%">
+                                <select id="grade_level_id" name="grade_level_id" class="input" ng-model="user.grade_level_id">
+                                    <option value="Please select one option" disabled>Please select one option</option>
+                                    <option ng-repeat="gradelevel in gradelevels" value="{{gradelevel.id}}">{{gradelevel.grade_level_name | uppercase}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="label">Marital Status</label>
+                        <div class="control">
+                            <div class="select" style="width: 100%">
+                                <select id="marital_status" name="marital_status" class="input" ng-model="user.marital_status">
+                                      <option selected>Please select one option</option>
+                                      <option>SINGLE</option>
+                                      <option>MARRIED</option>
+                                      <option>SEPARATED</option>
+                                      <option>WIDOW/WIDOWER</option>
+                                    </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <input id="role" name="role" type="hidden" ng-init="user.role='staff member'" value="staff member" ng-model="signup.role">
+                    </div>
+                    <div class="field">
+                        <label class="label">Home Address</label>
+                        <div class="control">
+                            <textarea id="home_address" name="home_address" ng-model="user.home_address" class="textarea">HOME ADDRESS</textarea>
+                        </div>
+                    </div>
+        </div>
+        <br/>
+        <div class="field">
+            <div class="control">
+                <label class="checkbox">
+                    <input ng-model="user.check" type="checkbox">&nbsp I accept that the information above are true and correct
+                </label>
+            </div>
+        </div>
+        <div class="field is-grouped">
+            <div class="control">
+                <button ng-click="save();" class="button is-link">Submit</button>
+            </div>
+            <div class="control">
+                <button class="button is-light">Cancel</button>
+            </div>
+        </div>
+        </form>
+        </section>
+    </div>
+    </div>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.serializeToJSON.min.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/bulma-toast.min.js"></script>
+    <script src="js/utility.js"></script>
+    <script src="js/master.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/user.js"></script>
+</body>
+
+</html>

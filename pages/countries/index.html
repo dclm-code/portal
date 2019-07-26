@@ -1,0 +1,38 @@
+<div class="level">
+    <div class="level-item"></div>
+    <a href="#/countryform" class="button is-medium level-right">
+        <span class="tag is-success is spaced">+</span> Add New
+    </a>
+</div>
+
+<table class="table is-striped" ng-controller="country">
+    <thead>
+        <tr>
+            <th>SN</th>
+            <th>COUNTRY CODE</th>
+            <th>COUNTRY NAME</th>
+            <th colspan="3">ACTION</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="country in countries">
+            <td>{{country.id}}</td>
+            <td>{{country.country_code}}</td>
+            <td>{{country.country_name}}</td>
+            <td>
+                <a href="#/view_country/{{country.id}}"><i class="fa fa-eye" title="view"></i>
+                </a>
+            </td>
+            <td>
+                <a href="#/edit_country/{{country.id}}">
+                    <i class="fa fa-edit" title="edit"></i>
+                </a>
+            </td>
+
+            <td>
+                <a ng-click="deletecountry(country.id);">
+                    <i class="fa fa-trash-alt" title="delete"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>

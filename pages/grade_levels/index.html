@@ -1,0 +1,40 @@
+<div class="level">
+    <div class="level-item">&nbsp;</div>
+    <a href="#/grade_levelform" class="button is-medium level-right">
+        <span class="tag is-success is-spaced">+</span>&nbsp; Add New
+    </a>
+</div>
+<table class="table is-striped" ng-controller='grade_level_list'>
+    <thead>
+        <tr>
+            <th>SN</th>
+            <th>GRADE_LEVEL CODE</th>
+            <th>GRADE_LEVEL NAME</th>
+            <th colspan='3'>ACTION</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat=" grade_level in grade_levels">
+            <td>{{grade_level.id}}</td>
+            <td>{{grade_level.grade_level_code}}</td>
+            <td>{{grade_level.grade_level_name}}</td>
+            <td>
+
+                <a href="#/view_grade_level/{{grade_level.id}}">
+                    <i class="fa fa-eye" title="view"></i></a>
+            </td>
+            <td>
+                <a href="#/edit_grade_level/{{grade_level.id}}">
+                    <i class="fa fa-edit" title="edit"></i>
+                </a>
+            </td>
+            <td>
+                <a ng-click="deletegrdel(grade_level.id);" href="javascript:void(0);">
+                    <i class="fa fa-trash-alt" title="delete"></i>
+                </a>
+            </td>
+        </tr>
+
+    </tbody>
+</table>

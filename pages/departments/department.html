@@ -1,0 +1,33 @@
+    <header>
+        <h1 class="title is-2">ADD DEPARTMENT</h1>
+    </header>
+    <section>
+    <div>
+    <form class="form">
+        <div class="field">
+            <label class="label">Department Code</label>
+            <div class="control">
+                <input ng-model = "department.department_code" type="text" class="input" placeholder="Department Code">
+            </div>
+    
+            <div class="field">
+            <label class="label">Department Name</label>
+            <div class="control has-icons-left">
+                <input ng-model = "department.department_name" type="text" class="input" placeholder="Department Name">
+                <span class="icon is-small is-left">
+              <i class="fa fa-briefcase"></i>
+            </span>
+            </div>
+        </div>
+        
+        </div>
+        <div class="field is-grouped">
+            <div class="control">
+                <button ng-click="save();" class="button is-link">Submit</button>
+            </div>
+            <div class="control">
+                <button class="button is-light">Cancel</button>
+            </div>
+        </div>
+    </form>
+    </section>

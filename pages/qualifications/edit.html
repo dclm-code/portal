@@ -1,0 +1,32 @@
+<header>
+    <h1 class="title is-1">ENTER QUALIFICATION</h1>
+</header>
+<div>
+<form class="form"> 
+ <br>
+<div class="field">
+    <label class="label">Qualification Code</label>
+    <div class="control">
+        <input ng-model="qualification.qualification_code" class="input" type="text" placeholder="e.g. 020gd">
+    </div>
+</div><br>
+<div class="field">
+<label class="label">Qualification Name</label>
+<div class="control">
+    <input ng-model="qualification.qualification_name" class="input" type="text" placeholder="e.g B.SC">
+</div>
+</div><br>
+<div class="field is-grouped">
+<p class="control">
+    <button ng-click="update();" class="button is-link">
+                Submit
+    </button>
+</p>
+<p class="control">
+    <button class="button is-light">
+                Cancel
+    </button>
+</p>
+</div>
+</form>
+</div>

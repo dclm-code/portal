@@ -1,0 +1,55 @@
+<style>
+    .anchor{
+        color: black;
+        font-weight: bold;
+    }
+    .anchor:active {
+        color: black;
+        font-weight: normal;
+    }
+    .anchor:link{
+        color: #000;
+        font-weight: bold;
+    }
+    .anchor:visited{
+        color: #000;
+        font-weight: normal
+    }
+    </style>
+    <h1 class="title is-4">
+    Office Memo/Request
+    </h1>
+    <div class="level">
+    <div class="level-item">&nbsp;</div>
+    <a href="#/compose" class="navbar-item is-outlined">
+    <span class="tag is-success is-spaced">+</span> &nbsp; &nbsp; Compose
+    </a>
+    </div>
+    <button onclick="myPrint()" class="button is-link">Click to Print</button>
+    <br><br>
+    <table class="table is-striped is-hoverable" ng-controller="messageList" style="cursor: pointer">
+        <thead>
+            <tr>
+            <th >SENDER</th>
+            <th style="width: 200px">SUBJECT</th>
+            <th style="width: 400px">MESSAGE</th>
+            <th>ATTACHMENT</th>
+            <th>ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="message in messages | orderBy: '-id' ">
+            <td><a class="anchor" href="#/read_message/{{message.id}}">{{message.sender}}</a></td>
+            <td><a class="anchor" href="#/read_message/{{message.id}}">{{message.subject}}</a></td>
+            <td style="font-size:80%"><a class="anchor" href="#/read_message/{{message.id}}">{{message.message}}</a></td>
+            <td><a class="anchor" href="#/read_message/{{message.id}}">{{message.filename}}</a></td>
+            <td><a href="#/read_message/{{message.id}}"><i class="fa fa-envelope-open" title="Read"></i></a></td>
+        </tr>
+        </tbody>
+    </table>
+    <script>
+        function myPrint() {
+          window.print();
+        }
+        </script>
+    
