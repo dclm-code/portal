@@ -1,0 +1,114 @@
+<h1 class="title is-2">Fuel Approval</h1>
+<div>
+    <section>
+        <form class="form">
+                <div class="field">
+                        <label class="label">Name</label>
+                        <p class="control is-expanded has-icons-left">
+                            <input ng-model="fuels.name" class="input" type="text" required placeholder="Car Model" disabled>
+                          <span class="icon is-small is-left">
+                            <i class="fa fa-car"></i>
+                          </span>
+                          <span class="icon is-small is-right">
+                            <i class="fa fa-car"></i>
+                          </span>
+                        </p>
+                      </div> 
+                      <div class="field">
+                            <label class="label">Department</label>
+                            <p class="control is-expanded has-icons-left">
+                                <input ng-model="fuels.department" class="input" type="text" required placeholder="XXX123AA" disabled>
+                              <span class="icon is-small is-left">
+                                <i class="fa fa-car"></i>
+                              </span>
+                              <span class="icon is-small is-right">
+                                <i class="fa fa-car"></i>
+                              </span>
+                            </p>
+                          </div> 
+                <div class="field">
+                        <label class="label">Car Model</label>
+                        <p class="control is-expanded has-icons-left">
+                            <input ng-model="fuels.model" class="input" type="text" required placeholder="Car Model" disabled>
+                          <span class="icon is-small is-left">
+                            <i class="fa fa-car"></i>
+                          </span>
+                          <span class="icon is-small is-right">
+                            <i class="fa fa-car"></i>
+                          </span>
+                        </p>
+                      </div> 
+                      <div class="field">
+                            <label class="label">Plate Number</label>
+                            <p class="control is-expanded has-icons-left">
+                                <input ng-model="fuels.plate" class="input" type="text" required placeholder="XXX123AA" disabled>
+                              <span class="icon is-small is-left">
+                                <i class="fa fa-car"></i>
+                              </span>
+                              <span class="icon is-small is-right">
+                                <i class="fa fa-car"></i>
+                              </span>
+                            </p>
+                          </div> 
+                          <div class="field">
+                                <label class="label">Milage</label>
+                                <p class="control is-expanded has-icons-left">
+                                    <input ng-model="fuels.milage" class="input" type="number" required placeholder="00" disabled>
+                                  <span class="icon is-small is-left">
+                                        <i class="fas fa-tachometer"></i>
+                                  </span>
+                                  <span class="icon is-small is-right">
+                                        <i class="fas fa-tachometer"></i>
+                                  </span>
+                                </p>
+                              </div>  
+                              <div class="field">
+                                    <label class="label">Litres Requested</label>
+                                    <p class="control is-expanded has-icons-left">
+                                        <input ng-model="fuels.litre" class="input" type="number" required placeholder="00" disabled>
+                                      <span class="icon is-small is-left">
+                                        <i class="fa fa-gas-pump"></i>
+                                      </span>
+                                      <span class="icon is-small is-right">
+                                        <i class="fa fa-gas-pump"></i>
+                                      </span>
+                                    </p>
+                                  </div> 
+                                  
+                                  <div class="field">
+                                        <label class="label">Vehicle Model</label>
+                                        <p class="control is-expanded has-icons-left">
+                                            <input ng-model="fuels.vehicle_model" class="input" type="number" required placeholder="00" disabled>
+                                          <span class="icon is-small is-left">
+                                            <i class="fa fa-car"></i>
+                                          </span>
+                                          <span class="icon is-small is-right">
+                                            <i class="fa fa-car"></i>
+                                          </span>
+                                        </p>
+                                      </div> 
+
+                                      <div class="field">
+                                            <label class="label">Store Approval</label>
+                                            <div class="control">
+                                                <div class= "select" style="width: 100%">
+                                                    <select ng-model="fuell.audit" type="text" class="input" required>
+                                                        <option>Please select one option</option>
+                                                        <option value="Approved">Approved</option>
+                                                        <option value="Declined">Declined</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                            
+                                      <div class="field is-grouped">
+                                            <div class="control">
+                                                <button ng-click="saves();" class="button is-link">Submit</button>
+                                            </div>
+                                            <div class="control">
+                                                <button class="button is-light">Cancel</button>
+                                            </div>
+                                        </div>
+            </form>
+    </section>
+</div>

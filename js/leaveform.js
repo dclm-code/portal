@@ -1,5 +1,5 @@
 //var baseUrl = "http://127.0.0.1:8000/api/";
-
+user = local_store({}, "dclm-user", "get");
 app.controller('leaveController', function($scope, $http, $filter, $routeParams) {
     var id = $routeParams.leaveform;
     this.leaveform = { staff_id: '', reliever: '', days_requested: '', period_leave_day: '', period_leave_month: '', period_leave_day_resume: '', period_leave_month_resume: '', number_of_week: '', balance_of_leave: '', public_holiday: '', entitled: '', period_leave_year: '' }
@@ -13,66 +13,124 @@ app.controller('leaveController', function($scope, $http, $filter, $routeParams)
             $scope.info = response.data.message;
         }, function(error) {
             $scope.error = error.data.message;
+            makeToast(msg, { "type": "is-danger", "duration": 2000 });
         })
     }
-    $http.get(baseUrl + "leaveforms/" + id)
-        .then((data) => {
-            $scope.leaveforms = data.data;
-        }, (err) => {
-            $scope.verror = err;
-        })
+$http({
+    url: baseUrl + "leaveforms/" + id,
+    method: "GET",
+    //send authorization token with request.
+    headers: {
+        Authorization: `Bearer ${user.token}`
+    },
+    contentType: 'application/json'
+}).then((data) => {
+    $scope.leaveforms = data.data;
+}, (err) => {
+    console.log(err);
+});
+
 })
 
 app.controller('hodView', function($scope, $http, ) {
-    $http.get(baseUrl + "leaveforms")
-        .then((data) => {
-            $scope.leaveforms = data.data;
-        }, (error) => {
-            $scope.error = error;
-        })
-})
+    $http({
+        url: baseUrl + "leaveforms/",
+        method: "GET",
+        //send authorization token with request.
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        contentType: 'application/json'
+    }).then((data) => {
+        $scope.leaveforms = data.data;
+    }, (err) => {
+        let msg = "There is an error retrieving sections.";
+        makeToast(msg, { "type": "is-danger", "duration": 2000 });
+    });
+    
+    })
 
 app.controller('adminView', function($scope, $http) {
-    $http.get(baseUrl + "leaveforms")
-        .then((data) => {
-            $scope.leaveforms = data.data;
-        }, (error) => {
-            $scope.error = error;
-        })
-})
+    $http({
+        url: baseUrl + "leaveforms/",
+        method: "GET",
+        //send authorization token with request.
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        contentType: 'application/json'
+    }).then((data) => {
+        $scope.leaveforms = data.data;
+    }, (err) => {
+        let msg = "There is an error retrieving sections.";
+        makeToast(msg, { "type": "is-danger", "duration": 2000 });
+    });
+    
+    })
 app.controller('csView', function($scope, $http) {
-    $http.get(baseUrl + "leaveforms")
-        .then((data) => {
-            $scope.leaveforms = data.data;
-        }, (error) => {
-            $scope.error = error;
-        })
-})
+    $http({
+        url: baseUrl + "leaveforms/",
+        method: "GET",
+        //send authorization token with request.
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        contentType: 'application/json'
+    }).then((data) => {
+        $scope.leaveforms = data.data;
+    }, (err) => {
+        let msg = "There is an error retrieving sections.";
+        makeToast(msg, { "type": "is-danger", "duration": 2000 });
+    });
+    
+    })
 app.controller('statusController', function($scope, $http, $routeParams) {
     var id = $routeParams.leaveform;
     $scope.today = new Date();
-    $http.get(baseUrl + "leaveforms/" + id)
-        .then((data) => {
-            $scope.leaveform = data.data;
-        }, (error) => {
-            $scope.error = error;
-        })
+   $http({
+    url: baseUrl + "leaveforms/" + id,
+    method: "GET",
+    //send authorization token with request.
+    headers: {
+        Authorization: `Bearer ${user.token}`
+    },
+    contentType: 'application/json'
+}).then((data) => {
+    $scope.leaveform = data.data;
+}, (err) => {
+    let msg = "There is an error retrieving sections.";
+    makeToast(msg, { "type": "is-danger", "duration": 2000 });
+});
+
 })
 
 app.controller('hodController', function($scope, $http, $routeParams) {
     this.leaveforms = { hod_remark: '', hod_approved: '' }
     var id = $routeParams.leaveform;
-    $http.get(baseUrl + "leaveforms/" + id)
-        .then((data) => {
-            $scope.leaveform = data.data;
-        }, (err) => {
-            $scope.verror = err;
-        })
+    $http({
+        url: baseUrl + "leaveforms/" + id,
+        method: "GET",
+        //send authorization token with request.
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        contentType: 'application/json'
+    }).then((data) => {
+        $scope.leaveform = data.data;
+    }, (err) => {
+        let msg = "There is an error retrieving sections.";
+            makeToast(msg, { "type": "is-danger", "duration": 2000 });
+    });
+    
+    
     $scope.save = function() {
         $http({
             url: baseUrl + 'leaveforms/' + id,
             method: "PUT",
             data: this.leaveforms,
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            },
             contentType: 'application/json'
         }).then((response) => {
             $scope.info = response.data.message;
@@ -86,17 +144,30 @@ app.controller('hodController', function($scope, $http, $routeParams) {
 app.controller('csController', function($scope, $http, $routeParams) {
     this.leaveforms = { cs_remark: '', cs_approved: '' }
     var id = $routeParams.leaveform;
-    $http.get(baseUrl + "leaveforms/" + id)
-        .then((data) => {
-            $scope.leaveform = data.data;
-        }, (err) => {
-            $scope.verror = err;
-        })
+    $http({
+        url: baseUrl + "leaveforms/" + id,
+        method: "GET",
+        //send authorization token with request.
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        contentType: 'application/json'
+    }).then((data) => {
+        $scope.leaveform = data.data;
+    }, (err) => {
+        let msg = "There is an error retrieving sections.";
+            makeToast(msg, { "type": "is-danger", "duration": 2000 });
+    });
+    
+    
     $scope.save = function() {
         $http({
             url: baseUrl + 'leaveforms/' + id,
             method: "PUT",
             data: this.leaveforms,
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            },
             contentType: 'application/json'
         }).then((response) => {
             $scope.info = response.data.message;
@@ -110,17 +181,30 @@ app.controller('csController', function($scope, $http, $routeParams) {
 app.controller('adminController', function($scope, $http, $routeParams) {
     this.leaveforms = { period_leave_approved: '', date_resume: '', basics: '', allowance: '', admin_approved: '', admin_remark: '' }
     var id = $routeParams.leaveform;
-    $http.get(baseUrl + "leaveforms/" + id)
-        .then((data) => {
-            $scope.leaveform = data.data;
-        }, (err) => {
-            $scope.verror = err;
-        })
+    $http({
+        url: baseUrl + "leaveforms/" + id,
+        method: "GET",
+        //send authorization token with request.
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        contentType: 'application/json'
+    }).then((data) => {
+        $scope.leaveform = data.data;
+    }, (err) => {
+        let msg = "There is an error retrieving sections.";
+        makeToast(msg, { "type": "is-danger", "duration": 2000 });
+    });
+    
+    
     $scope.save = function() {
         $http({
             url: baseUrl + 'leaveforms/' + id,
             method: "PUT",
             data: this.leaveforms,
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            },
             contentType: 'application/json'
         }).then((response) => {
             $scope.info = response.data.message;

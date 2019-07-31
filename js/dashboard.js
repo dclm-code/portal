@@ -231,7 +231,7 @@ app.config(function($routeProvider, $locationProvider) {
         })
         //fuel request
         .when('/fuel', {
-            templateUrl: 'fuel/fuel.html',
+            templateUrl: 'fuel/index.html',
             controller: 'fuelController'
         })
         .when('/adminfuel/:fuel', {

@@ -84,20 +84,21 @@ app.controller('viewGrade_LevelController', function($scope, $http, $routeParams
 app.controller('editGrade_LevelController', function($scope, $http, $routeParams) {
     var id = $routeParams.grade_level;
     this.grade_level = { grade_level_name: '', grade_level_code: '' }
-    $http({
-        url: baseUrl + "grade_levels/" + id,
-        method: "GET",
-        //send authorization token with request.
-        headers: {
-            Authorization: `Bearer ${user.token}`
-        },
-        contentType: 'application/json'
-    }).then((data) => {
-        $scope.grade_level = data.data;
-    }, (err) => {
-        console.log(err);
-    });
-
+$http({
+    url: baseUrl + "grade_levelss/" + id,
+    method: "GET",
+    headers: {
+        Authorization: `Bearer ${user.token}`
+    },
+    contentType: 'application/json'
+}).then((data) => {
+    $scope.grade_level = data.data;
+    $scope.edit = 1
+}, (err) => {
+    let msg = "<b>" + err.statusText + "</b>" + ": <i>" + err.data.info + "</i>";
+    makeToast(msg, { "type": "is-warning", "duration": 2000 });
+    window.location.href = "dashboard.html#/grade_level";
+})
 });
 
     $scope.update = function() {

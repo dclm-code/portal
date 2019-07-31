@@ -1,5 +1,5 @@
 //var baseUrl = "http://127.0.0.1:8000/api/";
-
+user = local_store({}, "dclm-user", "get");
 app.controller('messageController', function($scope, $http, $filter) {
     this.Message = { receiver: '', subject: '', message: '', filename: '' }
     $scope.save = function() {
@@ -7,6 +7,9 @@ app.controller('messageController', function($scope, $http, $filter) {
             url: baseUrl + 'messages',
             method: "POST",
             data: this.Message,
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            },
             contentType: 'application/json'
         }).then((response) => {
             info = response.data.message;
@@ -23,30 +26,51 @@ app.controller('messageController', function($scope, $http, $filter) {
 })
 
 app.controller('messageList', function($scope, $http) {
-    $http.get(baseUrl + "messages")
-        .then((data) => {
-            $scope.messages = data.data;
-        }, (err) => {
-            $scope.error = err;
-        })
+$http({
+    url: baseUrl + "messages",
+    method: "GET",
+    //send authorization token with request.
+    headers: {
+        Authorization: `Bearer ${user.token}`
+    },
+    contentType: 'application/json'
+}).then((data) => {
+    $scope.messages = data.data;
+}, (err) => {
+    console.log(err);
+});
+
 })
+
 app.controller('readMessageController', function($scope, $http, $routeParams) {
     var id = $routeParams.message;
-    $http.get(baseUrl + "messages/" + id)
-        .then((data) => {
-            console.log(data)
-            $scope.message = data.data;
-        }, (err) => {
-            console.log(err)
-            $scope.verror = err;
-        })
+    $http({
+        url: baseUrl + "messages/"+ id,
+        method: "GET",
+        //send authorization token with request.
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        contentType: 'application/json'
+    }).then((data) => {
+        $scope.message = data.data;
+    }, (err) => {
+        console.log(err);
+    });
 
 })
 
 app.controller('replyMessageController', function($scope, $http, $routeParams) {
     var id = $routeParams.message;
-    $http.get(baseUrl + "messages/" + id)
-        .then((data) => {
+    $http({
+        url: baseUrl + "messages/"+ id,
+        method: "GET",
+        //send authorization token with request.
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        contentType: 'application/json'
+    }).then((data) => {
             data.data.subject = "Re: " + data.data.subject
             data.data.message = "Type your reply below the senders message \n" + "Senders message: " + data.data.message + "\n\n Type reply here"
             $scope.message = data.data;
@@ -57,8 +81,15 @@ app.controller('replyMessageController', function($scope, $http, $routeParams) {
 
 app.controller('forwardMessageController', function($scope, $http, $routeParams) {
     var id = $routeParams.message;
-    $http.get(baseUrl + "messages/" + id)
-        .then((data) => {
+    $http({
+        url: baseUrl + "messages/"+ id,
+        method: "GET",
+        //send authorization token with request.
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        contentType: 'application/json'
+    }).then((data) => {
             data.data.subject = "Fwd: " + data.data.subject
             data.data.message = "Forwarded Message\n" + data.data.message
             $scope.message = data.data;

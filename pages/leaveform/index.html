@@ -21,7 +21,7 @@
                       <div class="field">
                         <p class="control is-expanded has-icons-left has-icons-right">
                             <select ng-model="leaveform.period_leave_day" type="number" class="input" required>
-                                <option value="0" disabled>Please select one option</option>
+                                <option value="0">Please select one option</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -65,7 +65,7 @@
                       <div class="field">
                         <p class="control is-expanded has-icons-left has-icons-right">
                             <select ng-model="leaveform.period_leave_month" type="text" class="input" required>
-                                <option value="0" disabled>Please select one option</option>
+                                <option value="0">Please select one option</option>
                                 <option value="January">January</option>
                                 <option value="February">February</option>
                                 <option value="March">March</option>
@@ -94,7 +94,7 @@
                         <div class="field">
                           <p class="control is-expanded has-icons-left has-icons-right">
                               <select ng-model="leaveform.period_leave_day_resume" type="number" class="input" required>
-                                  <option value="0" disabled>Please select one option</option>
+                                  <option value="0">Please select one option</option>
                                   <option value="1">1</option>
                                   <option value="2">2</option>
                                   <option value="3">3</option>
@@ -135,7 +135,7 @@
                           <div class="field">
                             <p class="control is-expanded has-icons-left has-icons-right">
                                 <select ng-model="leaveform.period_leave_month_resume" type="text" class="input" required>
-                                    <option value="0" disabled>Please select one option</option>
+                                    <option value="0">Please select one option</option>
                                     <option value="January">January</option>
                                     <option value="February">February</option>
                                     <option value="March">March</option>
@@ -177,7 +177,7 @@
                 <div class="control">
                     <div class= "select" style="width: 100%">
                         <select ng-model="leaveform.entitled" type="number" class="input" required>
-                            <option value="0" disabled>Please select one option</option>
+                            <option value="0">Please select one option</option>
                             <option value="14">Junior Staff</option>
                             <option value="21">Supervisory Staff</option>
                             <option value="28">Senior Staff</option>
@@ -200,7 +200,7 @@
                 <div class="control">
                     <div class= "select" style="width: 100%">
                         <select ng-model="leaveform.days_requested" type="number" class="input" required>
-                            <option value="0" disabled>Please select one option</option>
+                            <option value="0" >Please select one option</option>
                             <option value="7">One Week</option>
                             <option value="14">Two Week</option>
                             <option value="21">Three Week</option>
@@ -228,7 +228,6 @@
                         </div>
                     </div>
                 </div>		
-                <p style="background-color: mediumblue; color: white; width: 100%"><b>{{info}}</b></p><br><br>
 <div class="field is-grouped">
     <div class="control">
         <button ng-click="save();" class="button is-link">Submit</button>

@@ -1,0 +1,24 @@
+<h1 class="title is-4">
+        Fuel Approval
+        </h1>
+        </div>
+        <table class="table is-striped is-hoverable" ng-controller="messageList" style="cursor: pointer">
+            <thead>
+                <tr>
+                <th style="width: 250px">Name</th>
+                <th style="width: 250px">Department</th>
+                <th style="width: 250px">Plate Number</th>
+                <th style="width: 250px">Litre Requested</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="fuell in fuells | orderBy: '-id' ">
+                <td>{{fuell.name}}</td>
+                <td>{{fuell.department}}</td>
+                <td>{{fuell.model}}</td>
+                <td>{{fuell.litre}}</td>
+                <td colspan="3">Admin: {{fuell.admin}}&nbsp;Store: {{fuell.store}}&nbsp; Audit: {{fuell.audit}}&nbsp; Litre Dispensed: {{{fuell.litre_dispensed}}</td>
+                <td colspan="3"><a href="#/adminfuel/{{fuell.id}}">Admin</a>&nbsp; <a href="#/storefuel/{{fuell.id}}">Store</a>&nbsp; <a href="#/auditfuel/{{fuell.id}}">Audit</a>&nbsp;<a href="#/dispenserfuel/{{fuell.id}}">Dispenser</a></td>
+            </tr>
+            </tbody>
+        </table>

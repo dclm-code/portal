@@ -91,6 +91,7 @@ app.controller('editDepartmentController', function($scope, $http, $routeParams)
     }, (error) => {
         let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
         makeToast(msg, { "type": "is-warning", "duration": 2000 });
+        window.location.href = "dashboard.html#/department";
     });
 
 $scope.update = function() {

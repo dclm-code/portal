@@ -1,4 +1,5 @@
 //var baseUrl = "http://10.10.11.185:8000/api/";
+user = local_store({}, "dclm-user", "get");
 app.controller('stateController', function($scope, $http, $filter) {
 
     this.state = { country_id: '', state_name: '', state_code: '', }
@@ -9,18 +10,25 @@ app.controller('stateController', function($scope, $http, $filter) {
             url: baseUrl + 'states',
             method: "POST",
             data: this.state,
-            contenttype: 'application/json'
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            },
+            contentType: 'application/json'
         }).then((response) => {
-            console.log(response);
-            $scope.info = response.data.message;
+            const msg = response.data.message;
+            makeToast(msg, { type: "is-danger", duration: 2000 });
         }, function(error) {
-            $scope.error = error;
+            const msg = error.data.message;
+            makeToast(msg, { type: "is-danger", duration: 2000 });
         })
-    }
-    $scope.deletestate = function(id) {
+
+    }.deletestate = function(id) {
         $http({
             url: baseUrl + "states/" + id,
             method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            },
             contentType: 'application/json'
         }).then((data) => {
             $scope.info = data.data.message;
@@ -59,7 +67,9 @@ app.controller("editStateController", function($scope, $http, $routeParams) {
                 $scope.state = data.data;
                 $scope.edit = 1
             }, (err) => {
-                $scope.ederror = err;
+                let msg = "<b>" + err.statusText + "</b>" + ": <i>" + err.data.info + "</i>";
+        makeToast(msg, { "type": "is-warning", "duration": 2000 });
+        window.location.href = "dashboard.html#/state";
             })
 
         $scope.update = function() {
