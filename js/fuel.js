@@ -1,5 +1,5 @@
 //var baseUrl = "http://127.0.0.1:8000/api/";
-
+user = local_store({}, "dclm-user", "get");
 app.controller('fuelController', function($scope, $http, $routeParams) {
     var id = $routeParams.fuel;
     this.fuel = { model: '', plate: '', milage: '', litre: '', vehicle_model: '' };
@@ -13,34 +13,71 @@ app.controller('fuelController', function($scope, $http, $routeParams) {
         }).then((response) => {
             $scope.info = response.data.message;
         }, function(error) {
-            $scope.error = error.data.message;
+            let msg = error.data.message;
+            /**
+             * makeToast display user level messages and alerts
+             * @msg is the message to be display
+             * @type is a bulma css class is-danger=red, is-info=blue
+             * is-success=green is-warning=orange @duration is the time
+             * for the message to be display before it disappear
+             * automatically.
+             */
+            makeToast(msg, { "type": "is-danger", "duration": 2000 });
         })
     }
 
-    $http.get(baseUrl + "fuels/" + id)
-        .then((data) => {
-            $scope.fuels = data.data;
-        }, (err) => {
-            $scope.verror = err;
-        })
+    $http({
+        url: baseUrl + "fuels",
+        method: "GET",
+        //send authorization token with request.
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        contentType: 'application/json'
+    }).then((data) => {
+        $scope.fuels = data.data;
+    }, (err) => {
+        console.log(err);
+    });
+
     $scope.saves = function() {
         $http({
-            url: baseUrl + 'fuels/' + id,
-            method: "PUT",
+            url: baseUrl + 'fuels',
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            },
             data: this.fuell,
             contentType: 'application/json'
         }).then((response) => {
             $scope.info = response.data.message;
         }, function(error) {
-            $scope.error = error.data.message;
+            let msg = error.data.message;
+            /**
+             * makeToast display user level messages and alerts
+             * @msg is the message to be display
+             * @type is a bulma css class is-danger=red, is-info=blue
+             * is-success=green is-warning=orange @duration is the time
+             * for the message to be display before it disappear
+             * automatically.
+             */
+            makeToast(msg, { "type": "is-danger", "duration": 2000 });
         })
     }
-})
+
 app.controller('fuelViewController', function($scope, $http) {
-    $http.get(baseUrl + "fuels")
-        .then((data) => {
-            $scope.fuells = data.data;
-        }, (error) => {
-            $scope.error = error;
-        })
+    $http({
+        url: baseUrl + "fuels",
+        method: "GET",
+        //send authorization token with request.
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        contentType: 'application/json'
+    }).then((data) => {
+        $scope.fuells = data.data;
+    }, (err) => {
+        console.log(err);
+    });
+})
 })

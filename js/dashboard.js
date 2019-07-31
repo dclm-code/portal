@@ -1,4 +1,4 @@
-#const baseUrl = "http://localhost:8000/api/";
+//const baseUrl = "http://localhost:8000/api/";
 const baseUrl = "http://dclm.ahertl.com:8080/api/";
 const app = angular.module("dclm-app", ['ngRoute']);
 app.config(function($routeProvider, $locationProvider) {
