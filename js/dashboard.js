@@ -47,7 +47,7 @@ app.config(function($routeProvider, $locationProvider) {
         })
         .when(`/group_lgaform`, {
             templateUrl: 'group_lgas/group_lga.html',
-            controller: 'group_lgaController'
+            controller: 'groupLgaController'
         })
         .when(`/view_group_lga/:group_lga`, {
             templateUrl: 'group_lgas/view.html',

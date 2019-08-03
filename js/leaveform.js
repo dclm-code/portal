@@ -136,8 +136,8 @@ app.controller('hodController', function($scope, $http, $routeParams) {
         }).then((response) => {
             $scope.info = response.data.message;
         }, function(error) {
-            let error = error.data.message;
-            makeToast(error,{"type": "is-danger", "duration": 2000});
+            let msg = error.data.message;
+            makeToast(msg,{"type": "is-danger", "duration": 2000});
         })
         $scope.reset();
     }
@@ -174,8 +174,8 @@ app.controller('csController', function($scope, $http, $routeParams) {
         }).then((response) => {
             $scope.info = response.data.message;
         }, function(error) {
-            let error = error.data.message;
-            makeToast(error, { "type": "is-danger", "duration": 2000 });
+            let msg = error.data.message;
+            makeToast(msg, { "type": "is-danger", "duration": 2000 });
         })
         return ""
     }
@@ -195,8 +195,8 @@ app.controller('adminController', function($scope, $http, $routeParams) {
     }).then((data) => {
         $scope.leaveform = data.data;
     }, (error) => {
-        let error = error.data.message;
-        makeToast(error, { "type": "is-danger", "duration": 2000 });
+        let msg = error.data.message;
+        makeToast(msg, { "type": "is-danger", "duration": 2000 });
     });
     
     
@@ -212,8 +212,8 @@ app.controller('adminController', function($scope, $http, $routeParams) {
         }).then((response) => {
             $scope.info = response.data.message;
         }, function(error) {
-            let error = error.data.message;
-            makeToast(error, { "type": "is-danger", "duration": 2000 });
+            let msg = error.data.message;
+            makeToast(msg, { "type": "is-danger", "duration": 2000 });
         })
         return ""
     }
