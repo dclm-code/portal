@@ -35,7 +35,8 @@ app.controller('regionController', function($scope, $http, $filter) {
             $scope.info = data.data.message;
             setTimeout(window.location.reload(), 1000);
         }, (error) => {
-            $scope.uerror = error
+            let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
     }
 })
@@ -51,9 +52,9 @@ $http({
     contentType: 'application/json'
 }).then((data) => {
     $scope.regions = data.data;
-}, (err) => {
-    let msg = "There is an error retrieving sections.";
-            makeToast(msg, { "type": "is-danger", "duration": 2000 });
+}, (error) => {
+    let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
 });
 
 })
@@ -71,9 +72,9 @@ app.controller('viewregionController', function($scope, $http, $routeParams) {
         contentType: 'application/json'
     }).then((data) => {
         $scope.region = data.data;
-    }, (err) => {
-        let msg = "There is an error retrieving region.";
-                makeToast(msg, { "type": "is-danger", "duration": 2000 });
+    }, (error) => {
+        let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+        makeToast(msg, { "type": "is-warning", "duration": 2000 });
     });
     
     })
@@ -110,10 +111,9 @@ app.controller('editregionController', function($scope, $http, $routeParams) {
 
         }).then((data) => {
             $scope.info = data.data.message
-            console.log(data);
         }, error => {
-            $scope.ederror = error
-            console.log(error)
+            let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
     }
 });

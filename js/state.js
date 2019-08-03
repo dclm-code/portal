@@ -35,7 +35,8 @@ app.controller('stateController', function($scope, $http, $filter) {
             setTimeout(window.location.reload(), 1000);
 
         }, (error) => {
-            $scope.uerror = error
+            let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
 
     }
@@ -54,8 +55,9 @@ app.controller("viewStateController", function($scope, $http, $routeParams) {
     $http.get(baseUrl + "states/" + id)
         .then((data) => {
             $scope.state = data.data;
-        }, (err) => {
-            $scope.verror = err;
+        }, (error) => {
+            let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
 
 })
@@ -80,10 +82,9 @@ app.controller("editStateController", function($scope, $http, $routeParams) {
                 contentType: 'application/json'
             }).then((data) => {
                 $scope.info = data.data.message
-                console.log(data);
             }, (error) => {
-                $scope.ederror = error
-                console.log(error);
+                let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
             })
 
         }

@@ -36,8 +36,9 @@ $http({
     contentType: 'application/json'
 }).then((data) => {
     $scope.messages = data.data;
-}, (err) => {
-    console.log(err);
+}, (error) => {
+    let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
 });
 
 })
@@ -54,8 +55,9 @@ app.controller('readMessageController', function($scope, $http, $routeParams) {
         contentType: 'application/json'
     }).then((data) => {
         $scope.message = data.data;
-    }, (err) => {
-        console.log(err);
+    }, (error) => {
+        let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
     });
 
 })
@@ -74,8 +76,9 @@ app.controller('replyMessageController', function($scope, $http, $routeParams) {
             data.data.subject = "Re: " + data.data.subject
             data.data.message = "Type your reply below the senders message \n" + "Senders message: " + data.data.message + "\n\n Type reply here"
             $scope.message = data.data;
-        }, (err) => {
-            $scope.verror = err;
+        }, (error) => {
+            let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
 })
 
@@ -93,7 +96,8 @@ app.controller('forwardMessageController', function($scope, $http, $routeParams)
             data.data.subject = "Fwd: " + data.data.subject
             data.data.message = "Forwarded Message\n" + data.data.message
             $scope.message = data.data;
-        }, (err) => {
-            $scope.verror = err;
+        }, (error) => {
+            let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
 })

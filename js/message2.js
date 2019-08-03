@@ -34,11 +34,10 @@ app.controller('readMessageController', function($scope, $http, $routeParams) {
     var id = $routeParams.message;
     $http.get(baseUrl + "messages/" + id)
         .then((data) => {
-            console.log(data)
             $scope.message = data.data;
-        }, (err) => {
-            console.log(err)
-            $scope.verror = err;
+        }, (error) => {
+            let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
 })
 
@@ -61,7 +60,8 @@ app.controller('forwardMessageController', function($scope, $http, $routeParams)
             data.data.subject = "Fwd: " + data.data.subject
             data.data.message = "Forwarded Message\n" + data.data.message
             $scope.message = data.data;
-        }, (err) => {
-            $scope.verror = err;
+        }, (error) => {
+            let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
 })

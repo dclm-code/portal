@@ -56,8 +56,9 @@ app.controller('grouplist', function($scope, $http) {
         contentType: 'application/json'
     }).then((data) => {
         $scope.group_lgas = data.data;
-    }, (err) => {
-        console.log(err);
+    }, (error) => {
+        let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
     });
 
 })
@@ -112,10 +113,9 @@ $scope.update = function() {
         contentType: "application/json"
     }).then((data) => {
         $scope.info = data.data.message
-        console.log(data);
     }, (error) => {
-        $scope.ederror = error
-        console.log(error)
+        let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
     })
 }
 })

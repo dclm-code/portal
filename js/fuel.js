@@ -36,8 +36,9 @@ app.controller('fuelController', function($scope, $http, $routeParams) {
         contentType: 'application/json'
     }).then((data) => {
         $scope.fuels = data.data;
-    }, (err) => {
-        console.log(err);
+    }, (error) => {
+        let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
     });
 
     $scope.saves = function() {
@@ -76,8 +77,9 @@ app.controller('fuelViewController', function($scope, $http) {
         contentType: 'application/json'
     }).then((data) => {
         $scope.fuells = data.data;
-    }, (err) => {
-        console.log(err);
+    }, (error) => {
+        let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
     });
 })
 })

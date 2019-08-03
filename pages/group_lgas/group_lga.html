@@ -1,23 +1,12 @@
 
     <form class="form">
-    <div class="field">
+    <div class="field" ng-controller ="statelist">
        <h1 class="title is-2"> Enter State</h1><br>
         <div class="control">
             <div class="select" style="width: 100%">
                 <select class="input" ng-model="group_lga.state_id">
-                  <option value="0">Select State</option>
-                  <option value="1">LAGOS</option>
-                  <option value="2">OGUN</option>
-                  <option value="3">OYO</option>
-                  <option value="4">EKITI</option>
-                  <option value="5">DELTA</option>
-                  <option value="9">KANO</option>
-                  <option value="7">BORNO</option>
-                  <option value="6">ONDO</option>
-                  <option value="10">OSUN</option>
-                  <option value="11">BENUE</option>
-                  <option value="12">JIGAWA</option>
-                  
+                  <option value="0" disabled>Select State</option>
+                  <option ng-repeat="state in states" value="{{state.id}}">{{state.state_name}}</option>
                 </select>
             </div>
         </div>

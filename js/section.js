@@ -34,7 +34,8 @@ app.controller('sectionController', function($scope, $http, $filter) {
             $scope.info = data.data.message;
             setTimeout(window.location.reload(), 1000);
         }, (error) => {
-            $scope.uerror = error
+            let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
     }
 })
@@ -50,8 +51,9 @@ $http({
     contentType: 'application/json'
 }).then((data) => {
     $scope.sections = data.data;
-}, (err) => { let msg = "There is an error retrieving sections.";
-makeToast(msg, { "type": "is-danger", "duration": 2000 });
+}, (error) => {
+let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+makeToast(msg, { "type": "is-warning", "duration": 2000 });
 });
 
 })
@@ -68,8 +70,8 @@ app.controller('viewsectionController', function($scope, $http, $routeParams) {
         contentType: 'application/json'
     }).then((data) => {
         $scope.section = data.data;
-        }, (err) => { let msg = "There is an error retrieving sections.";
-        makeToast(msg, { "type": "is-danger", "duration": 2000 });
+        }, (error) => { let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+        makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
 
 })
@@ -103,10 +105,9 @@ app.controller('editsectionController', function($scope, $http, $routeParams) {
             contentType: 'application/json'
         }).then((data) => {
             $scope.info = data.data.message
-            console.log(data.data.messsage)
         }, (error) => {
-            $scope.ederror = error
-            console.log(error)
+            let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
     }
 })

@@ -12,7 +12,7 @@ app.controller('leaveController', function($scope, $http, $filter, $routeParams)
         }).then((response) => {
             $scope.info = response.data.message;
         }, function(error) {
-            $scope.error = error.data.message;
+            let msg = error.data.message;
             makeToast(msg, { "type": "is-danger", "duration": 2000 });
         })
     }
@@ -27,7 +27,8 @@ $http({
 }).then((data) => {
     $scope.leaveforms = data.data;
 }, (err) => {
-    console.log(err);
+    let msg = err.data.message;
+    makeToast(msg, { "type": "is-danger", "duration": 2000 });
 });
 
 })
@@ -44,7 +45,7 @@ app.controller('hodView', function($scope, $http, ) {
     }).then((data) => {
         $scope.leaveforms = data.data;
     }, (err) => {
-        let msg = "There is an error retrieving sections.";
+        let msg = err.data.message;
         makeToast(msg, { "type": "is-danger", "duration": 2000 });
     });
     
@@ -62,7 +63,7 @@ app.controller('adminView', function($scope, $http) {
     }).then((data) => {
         $scope.leaveforms = data.data;
     }, (err) => {
-        let msg = "There is an error retrieving sections.";
+        let msg = err.data.message;
         makeToast(msg, { "type": "is-danger", "duration": 2000 });
     });
     
@@ -79,7 +80,7 @@ app.controller('csView', function($scope, $http) {
     }).then((data) => {
         $scope.leaveforms = data.data;
     }, (err) => {
-        let msg = "There is an error retrieving sections.";
+        let msg = err.data.message;
         makeToast(msg, { "type": "is-danger", "duration": 2000 });
     });
     
@@ -98,7 +99,7 @@ app.controller('statusController', function($scope, $http, $routeParams) {
 }).then((data) => {
     $scope.leaveform = data.data;
 }, (err) => {
-    let msg = "There is an error retrieving sections.";
+    let msg = err.data.message;
     makeToast(msg, { "type": "is-danger", "duration": 2000 });
 });
 
@@ -118,8 +119,8 @@ app.controller('hodController', function($scope, $http, $routeParams) {
     }).then((data) => {
         $scope.leaveform = data.data;
     }, (err) => {
-        let msg = "There is an error retrieving sections.";
-            makeToast(msg, { "type": "is-danger", "duration": 2000 });
+        let msg = err.data.message;
+        makeToast(msg, { "type": "is-danger", "duration": 2000 });
     });
     
     
@@ -135,7 +136,8 @@ app.controller('hodController', function($scope, $http, $routeParams) {
         }).then((response) => {
             $scope.info = response.data.message;
         }, function(error) {
-            $scope.error = error.data.message;
+            let error = error.data.message;
+            makeToast(error,{"type": "is-danger", "duration": 2000});
         })
         $scope.reset();
     }
@@ -155,7 +157,7 @@ app.controller('csController', function($scope, $http, $routeParams) {
     }).then((data) => {
         $scope.leaveform = data.data;
     }, (err) => {
-        let msg = "There is an error retrieving sections.";
+        let msg = err.data.message;
             makeToast(msg, { "type": "is-danger", "duration": 2000 });
     });
     
@@ -172,7 +174,8 @@ app.controller('csController', function($scope, $http, $routeParams) {
         }).then((response) => {
             $scope.info = response.data.message;
         }, function(error) {
-            $scope.error = error.data.message;
+            let error = error.data.message;
+            makeToast(error, { "type": "is-danger", "duration": 2000 });
         })
         return ""
     }
@@ -191,9 +194,9 @@ app.controller('adminController', function($scope, $http, $routeParams) {
         contentType: 'application/json'
     }).then((data) => {
         $scope.leaveform = data.data;
-    }, (err) => {
-        let msg = "There is an error retrieving sections.";
-        makeToast(msg, { "type": "is-danger", "duration": 2000 });
+    }, (error) => {
+        let error = error.data.message;
+        makeToast(error, { "type": "is-danger", "duration": 2000 });
     });
     
     
@@ -209,7 +212,8 @@ app.controller('adminController', function($scope, $http, $routeParams) {
         }).then((response) => {
             $scope.info = response.data.message;
         }, function(error) {
-            $scope.error = error.data.message;
+            let error = error.data.message;
+            makeToast(error, { "type": "is-danger", "duration": 2000 });
         })
         return ""
     }

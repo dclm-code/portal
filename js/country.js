@@ -57,8 +57,9 @@ app.controller('country', function($scope, $http) {
         contentType: 'application/json'
     }).then((data) => {
         $scope.countries = data.data;
-    }, (err) => {
-        console.log(err);
+    }, (error) => {
+        let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
     });
 
 })
@@ -110,10 +111,9 @@ app.controller('editCountryController', function($scope, $http, $routeParams) {
             contentType: "application/json"
         }).then((data) => {
             $scope.info = data.data.message
-            console.log(data);
         }, (error) => {
-            $scope.ederror = error
-            console.log(error)
+            let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
     }
 })
