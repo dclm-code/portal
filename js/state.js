@@ -22,7 +22,9 @@ app.controller('stateController', function($scope, $http, $filter) {
             makeToast(msg, { type: "is-danger", duration: 2000 });
         })
 
-    }.deletestate = function(id) {
+    };
+    
+    $scope.deletestate = function(id) {
         $http({
             url: baseUrl + "states/" + id,
             method: "DELETE",
