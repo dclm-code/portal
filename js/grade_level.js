@@ -8,10 +8,11 @@ app.controller('gradeLevelController', function($scope, $http, $filter) {
                 $http({
                     url: baseUrl + 'grade_levels',
                     method: "POST",
-                    data: this.country,
+                    data: this.grade_level,
                     contentType: 'application/json'
                 }).then((response) => {
-                    $scope.info = response.data.message;
+                    let info = response.data.message;
+                    makeToast(info, {"type": "is-link", "duration": 2000 });
                 }, function(error) {
                     let msg = error.data.message;
                     /**
@@ -43,7 +44,7 @@ app.controller('gradeLevelController', function($scope, $http, $filter) {
             makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
     }
-
+});
 
 
 app.controller('grade_level_list', function($scope, $http) {
@@ -56,7 +57,7 @@ app.controller('grade_level_list', function($scope, $http) {
         },
         contentType: 'application/json'
     }).then((data) => {
-        $scope.grade_level = data.data;
+        $scope.grade_levels = data.data;
     }, (error) => {
         let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
             makeToast(msg, { "type": "is-warning", "duration": 2000 });
@@ -101,7 +102,7 @@ $http({
     makeToast(msg, { "type": "is-warning", "duration": 2000 });
     window.location.href = "dashboard.html#/grade_level";
 })
-});
+
 
     $scope.update = function() {
         $http({
@@ -119,4 +120,4 @@ $http({
             makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
     }
-})
+});

@@ -44,14 +44,13 @@ app.controller('departmentController', function($scope, $http, $filter) {
 
 app.controller('departmentlist', function($scope, $http) {
     $http({
-        url: baseUrl + "departments/" + id,
+        url: baseUrl + "departments",
         method: 'GET',
         headers: {
             Authorization: `Bearer ${user.token}`
         },   contentType: 'application/json'
     }).then((data) => {
-        $scope.info = data.data.message;
-        setTimeout(window.location.reload(), 1000);
+        $scope.departments = data.data;
     }, (error) => {
         let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
         makeToast(msg, { "type": "is-warning", "duration": 2000 });
