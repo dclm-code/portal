@@ -58,8 +58,8 @@
             <div class="field">
                 <label class="label">Gender</label>
                 <div class="control">
-                    <div class="select input">
-                        <select ng-model="user.gender">
+                    <div class="select" style="width:100%">
+                        <select ng-model="user.gender" class="input">
                       <option value="Please select one option" disabled>Please select one option</option>
                       <option>Female</option>
                       <option>Male</option>
@@ -85,14 +85,14 @@
                     </span>
                 </div>
             </div>
-            <div class="field">
+            <div class="field" ng-controller="user-sections">
                 <label class="label">Section</label>
                 <div class="control">
-                    <div class="select input">
-                        <select ng-model="user.section_id">
-                      <option value="Please select one option" disabled>Select dropdown</option>
-
-                    </select>
+                    <div class="select" class="width:100%">
+                        <select ng-model="user.section_id" class="input">
+                            <option value="Please select one option" disabled>Select dropdown</option>
+                            <option ng-repeat="section in sections" value="{{section.id}}">{{section.section_name}}</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -107,34 +107,36 @@
                     </div>
                 </div>
             </div>
-            <div class="field">
+            <div class="field" ng-controller="lga">
                 <label class="label">LGA of Work</label>
                 <div class="control">
-                    <div class="select input">
-                        <select ng-model="user.location_of_work">
-                      <option value="Please select one option" disabled>Please select one option</option>
-
-                    </select>
+                    <div class="select" style="width:100%">
+                        <select class="input" ng-model="user.location_of_work">
+                            <option value="Please select one option" disabled>Please select one option</option>
+                            <option ng-repeat="lga in lgas" value="{{lga.id}}">{{lga.local_govt_name}}</option>
+                        </select>
                     </div>
                 </div>
             </div>
-            <div class="field">
+            <div class="field" ng-controller="lga">
                 <label class="label">LGA of Origin</label>
                 <div class="control">
-                    <div class="select input">
-                        <select ng-model="user.location_of_origin">
-                      <option value="Please select one option" disabled>Please select one option</option>
-                    </select>
+                    <div class="select" style="width:100%">
+                        <select ng-model="user.location_of_origin" class="input">
+                            <option value="Please select one option" disabled>Please select one option</option>
+                            <option ng-repeat="lg1 in lgas" value="{{lg1.id}}">{{lg1.local_govt_name}}</option>
+                        </select>
                     </div>
                 </div>
             </div>
-            <div class="field">
+            <div class="field" ng-controller="qualification">
                 <label class="label">Qualification</label>
                 <div class="control">
-                    <div class="select input">
+                    <div class="select" style="width:100%">
                         <select ng-model="user.qualification">
-                      <option value="Please select one option" disabled>Please select one option</option>
-                    </select>
+                            <option value="Please select one option" disabled>Please select one option</option>
+                            <option ng-repeat="qualf in qualifications" value="{{qualf.id}}">{{qualf.qualification_name}}</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -143,18 +145,18 @@
                 <div class="control has-icons-left">
                     <input ng-model="user.date_of_employment" class="input" type="date" placeholder="DATE OF EMPLOYEMENT" style="cursor:pointer">
                     <span class="icon is-small is-left">
-                            <i class="fa fa-calendar"></i>
-                        </span>
+                        <i class="fa fa-calendar"></i>
+                    </span>
                 </div>
             </div>
-            <div class="field">
+            <div class="field" ng-controller="gradelevel">
                 <label class="label">Grade Level</label>
-                <div class="control input">
-                    <div class="select">
-                        <select ng-model="grade_level">
-                      <option value="Please select one option" disabled>Please select one option</option>
-
-                    </select>
+                <div class="control">
+                    <div class="select" style="width:100%">
+                        <select ng-model="grade_level" class="input">
+                            <option value="Please select one option" disabled>Please select one option</option>
+                            <option ng-repeat="gradelevel in gradelevels" value="{{gradelevel.id}}">{{gradelevel.grade_level_name | uppercase}}</option>
+                        </select>
                     </div>
                 </div>
             </div>
