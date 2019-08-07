@@ -2,42 +2,41 @@
         <h2 class="title is-2">ADD STATE</h2>
 </header>  
     <section>  
-        <div>
-        <form class="form">
-        <div class="field" ng-controller="country">
-                <label class="label">COUNTRY</label> 
-                <div class="control">
-                    <div class="select" style="width: 100%">
-                <select ng-model="state.country_id" class="input">
-                    <option value="0">Select option</option>
-                    <option ng-repeat="country in countries" value="{{country.id}}">{{country.country_name}}</option>           
-                  </select>
+        <div ng-controller="country">
+        <form id="frmState" class="form" ng-controller="stateController">
+        <div class="field">
+            <label class="label">COUNTRY</label> 
+            <div class="control">
+                <div class="select" style="width: 100%">
+                    <select id="country_id" name="country_id" ng-model="state.country_id" class="input">
+                        <option value="0">Select option</option>
+                        <option ng-repeat="country in countries" value="{{country.id}}">{{country.country_name}}</option>           
+                    </select>
+                </div>
             </div>
         </div>
-    </div>
         <br>
         <div class="field">
             <label class="label">STATE CODE</label>
             <div class="control">
-                <input ng-model="state.state_code" class="input" type="text" placeholder="xxx">
+                <input id="state_code" name="state_code" ng-model="state.state_code" class="input" type="text" placeholder="xxx">
             </div>
         </div>
-        </div>
-        <br>
-        <div class="control">
+    
+        <div class="field">
             <label class="label">STATE NAME</label>
             <div class="control">
-                <input ng-model="state.state_name" class="input" type="text" placeholder="Text input">
+                <input id="state_name" name="state_name" ng-model="state.state_name" class="input" type="text" placeholder="Text input">
             </div>
+        </div>
             <div class="field is-grouped is-grouped-left">
                 <div class="control">
-                <button ng-click="save();" class="button is-link">Submit</button>            
+                    <button ng-click="save();" class="button is-link">Submit</button>     
                 </div>
     
                 <div class="control">
-                <button  class="button is-light">Cancel</button>
-                              
-            </div>
+                    <button  class="button is-light">Cancel</button>           
+                </div>
         </div>
 
     </form>

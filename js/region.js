@@ -8,16 +8,16 @@ app.controller('regionController', function($scope, $http, $filter) {
         $http({
             url: baseUrl + "regions",
             method: "POST",
-            data: this.regions,
+            data: this.region,
             headers: {
                 Authorization: `Bearer ${user.token}`
             },
             contentType: 'application/json'
         }).then((response) => {
-            const msg = response.data.message;
-            makeToast(msg, { type: "is-danger", duration: 2000 });
+            let msg = "<b>"+response.data.status+"</b>"+response.data.info;
+            makeToast(msg, { type: "is-success", duration: 2000 });
         }, function(error) {
-            const msg = error.data.message;
+            let msg = "<b>"+error.statusText+"</b>:"+error.data.info;
             makeToast(msg, { type: "is-danger", duration: 2000 });
         })
 
@@ -26,17 +26,19 @@ app.controller('regionController', function($scope, $http, $filter) {
     $scope.deleteregion = function(id) {
         $http({
             url: baseUrl + "regions/" + id,
-            metod: "DELETE",
+            method: "DELETE",
             headers: {
                 Authorization: `Bearer ${user.token}`
             },
             contentType: 'application/json'
         }).then((data) => {
-            $scope.info = data.data.message;
-            setTimeout(window.location.reload(), 1000);
+            console.log(data);
+            let msg = "<b>" + data.data.status + "</b>: <i>" + data.data.info + "</i>";
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
+            setTimeout(window.location.reload(), 5000);
         }, (error) => {
             let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
-            makeToast(msg, { "type": "is-warning", "duration": 2000 });
+            makeToast(msg, { "type": "is-danger", "duration": 2000 });
         })
     }
 })
@@ -54,7 +56,7 @@ $http({
     $scope.regions = data.data;
 }, (error) => {
     let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
-            makeToast(msg, { "type": "is-warning", "duration": 2000 });
+    makeToast(msg, { "type": "is-danger", "duration": 2000 });
 });
 
 })
@@ -74,7 +76,7 @@ app.controller('viewregionController', function($scope, $http, $routeParams) {
         $scope.region = data.data;
     }, (error) => {
         let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
-        makeToast(msg, { "type": "is-warning", "duration": 2000 });
+        makeToast(msg, { "type": "is-danger", "duration": 2000 });
     });
     
     })
@@ -95,7 +97,7 @@ app.controller('editregionController', function($scope, $http, $routeParams) {
                 $scope.edit = 1;
             }, (err) => {
                 let msg = "<b>" + err.statusText + "</b>" + ": <i>" + err.data.info + "</i>";
-                makeToast(msg, { "type": "is-warning", "duration": 2000 });
+                makeToast(msg, { "type": "is-danger", "duration": 2000 });
                 window.location.href = "dashboard.html#/region";
             });
 
@@ -110,10 +112,11 @@ app.controller('editregionController', function($scope, $http, $routeParams) {
             contentType: 'application/json'
 
         }).then((data) => {
-            $scope.info = data.data.message
+            let msg = "<b>" + data.data.status + "</b>: <i>" + data.data.info + "</i>";
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
         }, error => {
             let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
-            makeToast(msg, { "type": "is-warning", "duration": 2000 });
+            makeToast(msg, { "type": "is-danger", "duration": 2000 });
         })
     }
 });

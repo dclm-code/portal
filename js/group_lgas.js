@@ -8,9 +8,13 @@ app.controller('groupLgaController', function($scope, $http, $filter) {
             url: baseUrl + 'group_lgas',
             method: "POST",
             data: this.group_lga,
+            headers:{
+                Authorization: `Bearer ${user.token}`
+            },
             contenttype: 'application/json'
         }).then((response) => {
-            $scope.info = response.data;
+            let msg = "<b>"+response.data.status+"</b>: <i>"+response.data.info+"</i>";
+            makeToast(msg, {"type": "is-success", "duration": 2000});
         }, function(error) {
             let msg = error.data.message;
             /**
@@ -35,7 +39,8 @@ app.controller('groupLgaController', function($scope, $http, $filter) {
             },
             contentType: 'application/json'
         }).then((data) => {
-            $scope.info = data.data.message;
+            let msg = "<b>"+data.data.status+"</b>:<i>"+data.data.info+"</i>";
+            makeToast(msg, {"type": "is-success", "duration": 2000});
             setTimeout(window.location.reload(), 1000);
         }, (error) => {
             let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
@@ -113,9 +118,11 @@ $scope.update = function() {
         contentType: "application/json"
     }).then((data) => {
         $scope.info = data.data.message
+        let msg = "<b>" + data.data.status + "</b>: <i>" + data.data.info + "</i>";
+        makeToast(msg, { "type": "is-success", "duration": 2000 });
     }, (error) => {
         let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
-            makeToast(msg, { "type": "is-warning", "duration": 2000 });
+        makeToast(msg, { "type": "is-warning", "duration": 2000 });
     })
 }
 })

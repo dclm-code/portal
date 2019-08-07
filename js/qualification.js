@@ -13,10 +13,10 @@ app.controller('qualificationController', function($scope, $http, $filter) {
             },
             contentType: 'application/json'
         }).then((response) => {
-            const msg = response.data.message;
-            makeToast(msg, { type: "is-danger", duration: 2000 });
+            let msg = "<b>"+response.data.status+"</b>: <i>"+response.data.info+"</i>";
+            makeToast(msg, { type: "is-success", duration: 2000 });
         }, function(error) {
-            const msg = error.data.message;
+            let msg = "<b>"+error.statusText+"</b>: <i>"+error.data.info+"</i>";
             makeToast(msg, { type: "is-danger", duration: 2000 });
         })
 
@@ -31,12 +31,12 @@ app.controller('qualificationController', function($scope, $http, $filter) {
             },
             contentType: 'application/json'
         }).then((data) => {
-            const msg = data.data.message;
-            makeToast(msg, { type: "is-warning", duration: 2000 });
+            let msg = "<b>"+data.data.status+"</b>: <i>"+data.data.info+"</i>";
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
             setTimeout(window.location.reload(), 1000);
         }, (error) => {
-            const msg = error.data.message;
-            makeToast(msg, { type: "is-danger", duration: 2000 });
+            let msg = "<b>"+error.statusText+"</b>: <i>"+error.data.info+"</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
     }
 })
@@ -107,7 +107,9 @@ app.controller('editQualificationController', function($scope, $http, $routePara
             },
             contentType: 'application/json'
         }).then((data) => {
-            $scope.info = data.data.message
+            //$scope.info = data.data.message
+            let msg = "<b>" + data.data.status + "</b>: <i>" + data.data.info + "</i>";
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
         }, (error) => {
             let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
             makeToast(msg, { "type": "is-warning", "duration": 2000 });

@@ -1,13 +1,15 @@
-<header class="hero">
+<header class="hero" ng-controller="messageController">
     <h1 class="title is-2"> MESSAGE</h1>
 </header>
     <div>
     <main>
     <form class="form" name="message-form" enctype="multipart/form-data">
-      <div class="field">
+      <div class="field" ng-controller="getUsers">
         <label class="label"> Receiver </label>
-        <div class="control has-icons-left">
-            <input ng-model="Message.receiver" class="input" type="text" placeholder="e.g Alex Smith">
+        <div class="control has-icons-left" >
+            <input id="receiver" name="receiver" ng-model="Message.receiver" class="input" type="text" placeholder="e.g Alex Smith" (ngOnChanges)='autocompletx(this.id,this.value,"table_name:users,column_name:first_name","autocompletewin");'>
+            <input id="txtreceiver" name="txtreceiver" type="hidden" value="{{Message.receiver}}" ng-model="Message.receiver">
+            <div id="autocompletewin" style="display: none; height: 0; width: 0;"></div>
             <span class="icon is-small is-left">
                 <i class="fa fa-user"></i>
             </span>
@@ -29,7 +31,7 @@
   <div class="field">
       <label class="label">Attachment</label>
       <div class="control">
-        <input type="file" ng-model="filename" onchange = "angular.element(this).scope().filechange(e);" class="input">
+        <file type="file" ng-model="filename" onchange = "angular.element(this).scope().filechange(e);"></file>
       </div>
     </div>
   <div class="field is-grouped">

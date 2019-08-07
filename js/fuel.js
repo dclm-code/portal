@@ -1,7 +1,7 @@
 //var baseUrl = "http://127.0.0.1:8000/api/";
 user = local_store({}, "dclm-user", "get");
 app.controller('fuelController', function($scope, $http, $routeParams) {
-    var id = $routeParams.fuel;
+    
     this.fuel = { model: '', plate: '', milage: '', litre: '', vehicle_model: '' };
     this.fuell = { admin: '', store: '', audit: '', dispenser: '', litre_dispensed: '' }
     $scope.save = function() {
@@ -25,7 +25,8 @@ app.controller('fuelController', function($scope, $http, $routeParams) {
             makeToast(msg, { "type": "is-danger", "duration": 2000 });
         })
     }
-
+});
+    /*
     $http({
         url: baseUrl + "fuels",
         method: "GET",
@@ -61,11 +62,11 @@ app.controller('fuelController', function($scope, $http, $routeParams) {
              * is-success=green is-warning=orange @duration is the time
              * for the message to be display before it disappear
              * automatically.
-             */
+             
             makeToast(msg, { "type": "is-danger", "duration": 2000 });
         })
     }
-
+*/
 app.controller('fuelViewController', function($scope, $http) {
     $http({
         url: baseUrl + "fuels",
@@ -79,7 +80,6 @@ app.controller('fuelViewController', function($scope, $http) {
         $scope.fuells = data.data;
     }, (error) => {
         let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
-            makeToast(msg, { "type": "is-warning", "duration": 2000 });
+        makeToast(msg, { "type": "is-warning", "duration": 2000 });
     });
-})
 })

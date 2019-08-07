@@ -9,12 +9,15 @@ app.controller('gradeLevelController', function($scope, $http, $filter) {
                     url: baseUrl + 'grade_levels',
                     method: "POST",
                     data: this.grade_level,
+                    headers:{
+                        Authorization: `Bearer ${user.token}`
+                    },
                     contentType: 'application/json'
                 }).then((response) => {
-                    let info = response.data.message;
-                    makeToast(info, {"type": "is-link", "duration": 2000 });
+                    let info = "<b>"+response.data.status+"</b>: <i>"+response.data.info+"</i>";
+                    makeToast(info, {"type": "is-success", "duration": 2000 });
                 }, function(error) {
-                    let msg = error.data.message;
+                    let msg = "<b>"+error.statusText+"</b>: <i>"+error.data.info+"</i>";
                     /**
                      * makeToast display user level messages and alerts
                      * @msg is the message to be display
@@ -37,7 +40,10 @@ app.controller('gradeLevelController', function($scope, $http, $filter) {
             },
             contentType: 'application/json'
         }).then((data) => {
-            $scope.info = data.data.message;
+            console.log(data);
+            //$scope.info = data.data.message;
+            let msg = "<b>" + data.data.status + "</b>: <i>" + data.data.info + "</i>";
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
             setTimeout(window.location.reload(), 1000);
         }, (error) => {
             let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
@@ -79,7 +85,7 @@ app.controller('viewGrade_LevelController', function($scope, $http, $routeParams
         $scope.grade_level = data.data;
     }, (error) => {
         let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
-            makeToast(msg, { "type": "is-warning", "duration": 2000 });
+        makeToast(msg, { "type": "is-warning", "duration": 2000 });
     });
 
 })
@@ -88,7 +94,7 @@ app.controller('editGrade_LevelController', function($scope, $http, $routeParams
     var id = $routeParams.grade_level;
     this.grade_level = { grade_level_name: '', grade_level_code: '' }
 $http({
-    url: baseUrl + "grade_levelss/" + id,
+    url: baseUrl + "grade_levels/" + id,
     method: "GET",
     headers: {
         Authorization: `Bearer ${user.token}`
@@ -106,7 +112,7 @@ $http({
 
     $scope.update = function() {
         $http({
-            url: baseUrl + "countries/" + id,
+            url: baseUrl + "grade_levels/" + id,
             method: "PUT",
             data: this.grade_level,
             headers: {
@@ -114,8 +120,12 @@ $http({
             },
             contentType: "application/json"
         }).then((data) => {
-            $scope.info = data.data.message
+            console.log(data);
+            //$scope.info = data.data.info
+            let msg = "<b>" + data.data.status + "</b>: <i>" + data.data.info + "</i>";
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
         }, (error) => {
+            console.log(error);
             let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
             makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })

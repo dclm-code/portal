@@ -8,11 +8,15 @@ app.controller('departmentController', function($scope, $http, $filter) {
             url: baseUrl + 'departments',
             method: "POST",
             data: this.department,
+            headers:{
+                Authorization: `Bearer ${user.token}`
+            },
             contentType: 'application/json'
         }).then((response) => {
-            $scope.info = response.data.message;
+            let msg = "<b>" + response.data.status + "</b>: <i>" + response.data.info + "</i>";
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
         }, function(error) {
-            let msg = error.data.message;
+            let msg = error.data.info;
             /**
              * makeToast display user level messages and alerts
              * @msg is the message to be display
@@ -34,10 +38,13 @@ app.controller('departmentController', function($scope, $http, $filter) {
             },
             contentType: 'application/json'
         }).then((data) => {
-            $scope.info = data.data.message;
-            setTimeout(window.location.reload(), 1000);
+            //$scope.info = data.data.message;
+            let msg = "<b>" + data.data.status + "</b>: <i>" + data.data.info + "</i>";
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
+            setTimeout(window.location.reload(), 2500);
         }, (error) => {
-            $scope.uerror = error
+            let msg = "<b>" + error.data.status + "</b>: <i>" + error.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
         })
     }
 })
@@ -64,10 +71,10 @@ app.controller('viewDepartmentController', function($scope, $http, $routeParams)
         method: 'GET',
         headers: {
             Authorization: `Bearer ${user.token}`
-        },   contentType: 'application/json'
+        },   
+        contentType: 'application/json'
     }).then((data) => {
-        $scope.info = data.data.message;
-        setTimeout(window.location.reload(), 1000);
+        $scope.department = data.data;
     }, (error) => {
         let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
         makeToast(msg, { "type": "is-warning", "duration": 2000 });
@@ -83,10 +90,14 @@ app.controller('editDepartmentController', function($scope, $http, $routeParams)
         method: 'GET',
         headers: {
             Authorization: `Bearer ${user.token}`
-        },   contentType: 'application/json'
+        },   
+        contentType: 'application/json'
     }).then((data) => {
-        $scope.info = data.data.message;
-        setTimeout(window.location.reload(), 1000);
+        $scope.department = data.data;
+        $scope.edit = 1;
+        /*let msg = "<b>" + data.data.status + "</b>: <i>" + data.data.info + "</i>";
+        makeToast(msg, { "type": "is-success", "duration": 2000 });
+        setTimeout(window.location.reload(), 1000);*/
     }, (error) => {
         let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
         makeToast(msg, { "type": "is-warning", "duration": 2000 });
@@ -95,7 +106,7 @@ app.controller('editDepartmentController', function($scope, $http, $routeParams)
 
 $scope.update = function() {
     $http({
-        url: baseUrl + "countries/" + id,
+        url: baseUrl + "departments/" + id,
         method: "PUT",
         data: this.country,
         headers: {
@@ -103,10 +114,11 @@ $scope.update = function() {
         },
         contentType: "application/json"
     }).then((data) => {
-        $scope.info = data.data.message
+        let msg = "<b>" + data.data.status + "</b>: <i>" + data.data.info + "</i>";
+        makeToast(msg, { "type": "is-success", "duration": 2000 });
     }, (error) => {
         let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
-            makeToast(msg, { "type": "is-warning", "duration": 2000 });
+        makeToast(msg, { "type": "is-warning", "duration": 2000 });
     })
 }
 })

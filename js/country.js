@@ -3,17 +3,21 @@
 //login can be validated.
 user = local_store({}, "dclm-user", "get");
 app.controller('countryController', function($scope, $http, $filter) {
-
+    
     $scope.save = function() {
         $http({
             url: baseUrl + 'countries',
             method: "POST",
             data: this.country,
+            headers:{
+                Authorization: `Bearer ${user.token}`
+            },
             contentType: 'application/json'
         }).then((response) => {
-            $scope.info = response.data.message;
+            let msg = "<b>" + response.date.status + "</b>: <i>" + response.data.info + "</i>";
+            makeToast(msg, {"type": "is-success", "duration": 2000});
         }, function(error) {
-            let msg = error.data.message;
+            let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
             /**
              * makeToast display user level messages and alerts
              * @msg is the message to be display
@@ -36,8 +40,9 @@ app.controller('countryController', function($scope, $http, $filter) {
             },
             contentType: 'application/json'
         }).then((data) => {
-            $scope.info = data.data.message;
-            setTimeout(window.location.reload(), 1000);
+            let msg = "<b>" + data.data.status + "</b>: <i>" + data.data.info + "</i>";
+            makeToast(msg, {type:"is-success", duration: 2000});
+            setTimeout(window.location.reload(), 5000);
         }, (error) => {
             let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
             makeToast(msg, { "type": "is-warning", "duration": 2000 });
@@ -110,7 +115,8 @@ app.controller('editCountryController', function($scope, $http, $routeParams) {
             },
             contentType: "application/json"
         }).then((data) => {
-            $scope.info = data.data.message
+            let msg = "<b>" + data.data.status + "</b>: <i>" + data.data.info + "</i>";
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
         }, (error) => {
             let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
             makeToast(msg, { "type": "is-warning", "duration": 2000 });

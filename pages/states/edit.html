@@ -1,23 +1,20 @@
 <header>
-        <h class="title is-2">ADD STATE</h2>
+        <h1 class="title is-2">ADD STATE</h1>
 </header>  
     <section>  
-        <div>
+        <div ng-controller="country">
         <form class="form">
-        <div class="field">
+            <div class="field">
                 <label class="label">COUNTRY</label> 
-                <div class="control input">
-
-                    <div class="select">
-                <select ng-model="state.country_id">
-                    <option value="0">Select option</option>
-                    <option value="1">Nigeria</option>
-                    <option value="2">Ghana</option>
-                    <option value="3">Gambia</option>           
-                  </select>
+                <div class="control">
+                    <div class="select" style="width:100%">
+                        <select ng-model="state.country_id" class="input">
+                            <option value="0">Select option</option>
+                            <option ng-repeat="country in countries" value="{{country.id}}">{{country.country_name}}</option>         
+                        </select>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
         <br>
         <div class="field">
             <label class="label">STATE CODE</label>
@@ -27,11 +24,12 @@
         </div>
         </div>
         <br>
-        <div class="control">
+        <div class="field">
             <label class="label">STATE NAME</label>
             <div class="control">
                 <input ng-model="state.state_name" class="input" type="text" placeholder="Text input">
             </div>
+        </div>
             <div class="field is-grouped is-grouped-left">
                 <div class="control">
                 <button ng-click="update();" class="button is-link">Submit</button>            

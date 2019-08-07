@@ -1,5 +1,5 @@
-//const baseUrl = "http://localhost:8000/api/";
-const baseUrl = "https://dclm.ahertl.com/api/";
+const baseUrl = "http://localhost:8000/api/";
+//const baseUrl = "https://dclm.ahertl.com/api/";
 const app = angular.module("dclm-app", ['ngRoute']);
 app.config(function($routeProvider, $locationProvider) {
     $locationProvider.hashPrefix('');
@@ -141,8 +141,7 @@ app.config(function($routeProvider, $locationProvider) {
             controller: 'messageList'
         })
         .when('/compose', {
-            templateUrl: 'messages/message.html',
-            controller: 'messageController'
+            templateUrl: 'messages/message.html'
         })
         .when('/read_message/:message', {
             templateUrl: 'messages/read.html',

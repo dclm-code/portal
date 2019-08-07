@@ -13,16 +13,16 @@ app.controller('sectionController', function($scope, $http, $filter) {
             },
             contentType: 'application/json'
         }).then((response) => {
-            const msg = response.data.message;
-            makeToast(msg, { type: "is-danger", duration: 2000 });
+            let msg = "<b>"+response.data.status+"</b>: <i>"+response.data.info+"</i>";
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
         }, function(error) {
-            const msg = error.data.message;
-            makeToast(msg, { type: "is-danger", duration: 2000 });
+            let msg = "<b>"+error.statusText+"</b>: <i>"+error.data.info+"</i>";
+            makeToast(msg, { "type": "is-danger", "duration": 2000 });
         })
 
     }
 
-    $scope.deletesection = function(id) {
+    $scope.deleteSection = function(id) {
         $http({
             url: baseUrl + "sections/" + id,
             method: "DELETE",
@@ -31,7 +31,8 @@ app.controller('sectionController', function($scope, $http, $filter) {
             },
             contentType: 'application/json'
         }).then((data) => {
-            $scope.info = data.data.message;
+            let msg = "<b>" + data.data.status + "</b>: <i>" + data.data.info + "</i>";
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
             setTimeout(window.location.reload(), 1000);
         }, (error) => {
             let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
@@ -58,7 +59,7 @@ makeToast(msg, { "type": "is-warning", "duration": 2000 });
 
 })
 
-app.controller('viewsectionController', function($scope, $http, $routeParams) {
+app.controller('viewSectionController', function($scope, $http, $routeParams) {
     var id = $routeParams.section;
     $http({
         url: baseUrl + "sections/" + id,
@@ -75,7 +76,7 @@ app.controller('viewsectionController', function($scope, $http, $routeParams) {
         })
 
 })
-app.controller('editsectionController', function($scope, $http, $routeParams) {
+app.controller('editSectionController', function($scope, $http, $routeParams) {
     this.section = { section_name: '', section_code: '' }
     var id = $routeParams.section;
     $http({
@@ -87,10 +88,11 @@ app.controller('editsectionController', function($scope, $http, $routeParams) {
         },
         contentType: 'application/json'
     }).then((data) => {
-        $scope.section = data.data;
-        }, (err) => { let msg = "<b>" + err.statusText + "</b>" + ": <i>" + err.data.info + "</i>";
-        makeToast(msg, { "type": "is-warning", "duration": 2000 });
-        window.location.href = "dashboard.html#/section";
+            $scope.section = data.data;
+        }, (err) => { 
+            let msg = "<b>" + err.statusText + "</b>" + ": <i>" + err.data.info + "</i>";
+            makeToast(msg, { "type": "is-warning", "duration": 2000 });
+            window.location.href = "dashboard.html#/section";
         })
 
     $scope.update = function() {
@@ -104,7 +106,8 @@ app.controller('editsectionController', function($scope, $http, $routeParams) {
             },
             contentType: 'application/json'
         }).then((data) => {
-            $scope.info = data.data.message
+            let msg = "<b>" + data.data.status + "</b>" + ": <i>" + data.data.info + "</i>";
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
         }, (error) => {
             let msg = "<b>" + error.statusText + "</b>: <i>" + error.data.info + "</i>";
             makeToast(msg, { "type": "is-warning", "duration": 2000 });

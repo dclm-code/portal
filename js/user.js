@@ -183,11 +183,16 @@ app.controller('remarkUserController', function($scope, $http, $routeParams) {
             url: baseUrl + "users/" + id,
             method: "PUT",
             data: this.remark,
+            headers:{
+                Authorization: `Bearer ${user.token}`
+            },
             contentType: 'application/json'
         }).then((data) => {
-            $scope.info = data.data.message
+            //$scope.info = data.data.message
+            let msg = "<b>"+data.data.status + "</b>: <i>" + data.data.info+"</i>";
+            makeToast(msg, { type: "is-success", duration: 2000 });
         }, (error) => {
-            const msg = error.statusText + ": " + error.data.message;
+            let msg = "<b>"+error.statusText + "</b>: <i>" + error.data.message+"</i>";
             makeToast(msg, { type: "is-danger", duration: 2000 });
         })
     }
