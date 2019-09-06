@@ -3,7 +3,6 @@ user = local_store({}, "dclm-user", "get");
 app.controller('messageController', function($scope, $http, $filter) {
     this.Message = { receiver: '', subject: '', message: '', filename: '' }
     $scope.save = function() {
-        console.log(this.Message);
         $http({
             url: baseUrl + 'messages',
             method: "POST",

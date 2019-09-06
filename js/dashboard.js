@@ -141,7 +141,8 @@ app.config(function($routeProvider, $locationProvider) {
             controller: 'messageList'
         })
         .when('/compose', {
-            templateUrl: 'messages/message.html'
+            templateUrl: 'messages/message.html',
+            controller: 'messageController'
         })
         .when('/read_message/:message', {
             templateUrl: 'messages/read.html',

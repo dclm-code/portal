@@ -1,14 +1,13 @@
-<header class="hero" ng-controller="messageController">
+<header class="hero">
     <h1 class="title is-2"> MESSAGE</h1>
 </header>
-    <div>
-    <main>
+    <div ng-controller="getUsers">
+    <main ng-controller="messageController">
     <form class="form" name="message-form" enctype="multipart/form-data">
-      <div class="field" ng-controller="getUsers">
+      <div class="field">
         <label class="label"> Receiver </label>
         <div class="control has-icons-left" >
-            <input id="receiver" name="receiver" ng-model="Message.receiver" class="input" type="text" placeholder="e.g Alex Smith" (ngOnChanges)='autocompletx(this.id,this.value,"table_name:users,column_name:first_name","autocompletewin");'>
-            <input id="txtreceiver" name="txtreceiver" type="hidden" value="{{Message.receiver}}" ng-model="Message.receiver">
+            <input id="receiver" name="receiver" class="input" type="text" ng-model="Message.receiver" placeholder="e.g Alex Smith" ng-change="autocompletx('receiver','dummy','table:users,column:id','autocompletewin');" >
             <div id="autocompletewin" style="display: none; height: 0; width: 0;"></div>
             <span class="icon is-small is-left">
                 <i class="fa fa-user"></i>
@@ -36,10 +35,10 @@
     </div>
   <div class="field is-grouped">
       <div class="control">
-          <button ng-click="save();" class="button is-link" onclick="submitForm" title="Send">Send</button>
+          <button ng-click="save();" class="button is-link" title="Send">Send</button>
       </div>
       <div class="control">
-          <button ng-click="" class="button is-link">Cancel</button>
+          <button type="reset" class="button is-link">Cancel</button>
       </div>
   </div>
   </form>

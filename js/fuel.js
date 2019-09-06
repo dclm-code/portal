@@ -9,9 +9,13 @@ app.controller('fuelController', function($scope, $http, $routeParams) {
             url: baseUrl + 'fuels',
             method: "POST",
             data: this.fuel,
+            headers: {
+                Authorization: `Bearer ${user.token}`
+            },
             contentType: 'application/json'
         }).then((response) => {
-            $scope.info = response.data.message;
+            let msg = response.data.message;
+            makeToast(msg, { "type": "is-success", "duration": 2000 });
         }, function(error) {
             let msg = error.data.message;
             /**

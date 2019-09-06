@@ -1,23 +1,11 @@
 //var baseUrl = "http://127.0.0.1:8000/api/";
 user = local_store({}, "dclm-user", "get");
 app.controller('leaveController', function($scope, $http, $filter, $routeParams) {
-    var id = $routeParams.leaveform;
+    //var id = $routeParams.leaveform;
     this.leaveform = { staff_id: '', reliever: '', days_requested: '', period_leave_day: '', period_leave_month: '', period_leave_day_resume: '', period_leave_month_resume: '', number_of_week: '', balance_of_leave: '', public_holiday: '', entitled: '', period_leave_year: '' }
-    $scope.save = function() {
-        $http({
-            url: baseUrl + 'leaveforms',
-            method: "POST",
-            data: this.leaveform,
-            contentType: 'application/json'
-        }).then((response) => {
-            $scope.info = response.data.message;
-        }, function(error) {
-            let msg = error.data.message;
-            makeToast(msg, { "type": "is-danger", "duration": 2000 });
-        })
-    }
+    
 $http({
-    url: baseUrl + "leaveforms/" + id,
+    url: baseUrl + "leaveforms",
     method: "GET",
     //send authorization token with request.
     headers: {
@@ -27,10 +15,28 @@ $http({
 }).then((data) => {
     $scope.leaveforms = data.data;
 }, (err) => {
+    console.log(err);
     let msg = err.data.message;
     makeToast(msg, { "type": "is-danger", "duration": 2000 });
 });
 
+$scope.save = function() {
+    $http({
+        url: baseUrl + 'leaveforms',
+        method: "POST",
+        data: this.leaveform,
+        headers: {
+            Authorization: `Bearer ${user.token}`
+        },
+        contentType: 'application/json'
+    }).then((response) => {
+        let msg = response.data.message;
+        makeToast(msg, { "type": "is-success", "duration": 2000 });
+    }, function(error) {
+        let msg = error.data.message;
+        makeToast(msg, { "type": "is-danger", "duration": 2000 });
+    })
+}
 })
 
 app.controller('hodView', function($scope, $http, ) {
